@@ -17,4 +17,5 @@ public class TripBucketItem
     public bool IsDeleted { get; set; } = false;
 
     public User User { get; set; } = null!;
+    public string? GoogleEventId { get; set; }
 }
