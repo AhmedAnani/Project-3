@@ -23,7 +23,7 @@ public class AppDbContext : DbContext
             entity.HasIndex(u => u.Email).IsUnique();
             entity.Property(u => u.Role).HasConversion<string>();
 
-            entity.HasQueryFilter(u => !u.IsDeleted);  //soft delete
+            entity.HasQueryFilter(u => !u.IsDeleted);  
         });
 
         modelBuilder.Entity<TripBucketItem>(entity =>
