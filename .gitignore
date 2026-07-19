@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs/Project-3.slnx/FileContentIndex
+
+## Build results
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio
+.vs/
+*.user

@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="Project-3/Country Explorer.csproj" />
+  <Project Path="CountryExplorer.Application/CountryExplorer.Application.csproj" />
+  <Project Path="CountryExplorer.Domain/CountryExplorer.Domain.csproj" />
+  <Project Path="CountryExplorer.Infrastructure/CountryExplorer.Infrastructure.csproj" />
+  <Project Path="CountryExplorer.Api/CountryExplorer.Api.csproj" />
 </Solution>
