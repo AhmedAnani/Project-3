@@ -1,6 +1,8 @@
-﻿using CountryExplorer.Application.Dtos.Auth;
+﻿using AutoMapper;
+using CountryExplorer.Application.Dtos.Auth;
 using CountryExplorer.Application.Services.Interfaces;
 using CountryExplorer.Domain.Entities;
+using CountryExplorer.Domain.Enums;
 using CountryExplorer.Domain.Exceptions;
 using CountryExplorer.Domain.Repositories;
 using Microsoft.Extensions.Logging;
@@ -15,13 +17,15 @@ public class AuthService : IAuthService
     private readonly IUserRepository _userRepo;
     private readonly IJwtService _jwtService;
     private readonly ILogger<AuthService> _logger;
+    private readonly IMapper _mapper;
 
     public AuthService(IUserRepository userRepo, IJwtService jwtService, 
-        ILogger<AuthService> logger)
+        ILogger<AuthService> logger, IMapper mapper)
     {
         _userRepo = userRepo;
         _jwtService = jwtService;
         _logger = logger;
+        _mapper = mapper;
     }
 
     /// <summary>
@@ -39,19 +43,17 @@ public class AuthService : IAuthService
             await _userRepo.SaveChangesAsync();
 
             var accessToken = _jwtService.GenerateAccessToken(user);
-            var expiresAt = DateTime.UtcNow.AddMinutes(30);
+            var expiresAt = DateTime.UtcNow.AddMinutes((int)ExpirationTime.AccessToken);
 
             _logger.LogDebug("Generated tokens for user {UserId}", user.Id);
 
-            return new AuthResponseDto
-            {
-                AccessToken = accessToken,
-                RefreshToken = refreshTokenEntity.Token,
-                AccessTokenExpiresAt = expiresAt,
-                Email = user.Email,
-                FullName = user.FullName,
-                PictureUrl = user.PictureUrl
-            };
+            var response = _mapper.Map<AuthResponseDto>(user);
+            response.AccessToken = accessToken;
+            response.RefreshToken = refreshTokenEntity.Token;
+            response.AccessTokenExpiresAt = expiresAt;
+
+            return response;
+
         }
         catch (Exception ex)
         {
@@ -92,23 +94,20 @@ public class AuthService : IAuthService
             await _userRepo.SaveChangesAsync();
 
             var accessToken = _jwtService.GenerateAccessToken(user);
-            var expiresAt = DateTime.UtcNow.AddMinutes(30);
+            var expiresAt = DateTime.UtcNow.AddMinutes((int)ExpirationTime.AccessToken);
 
             _logger.LogDebug("Refreshed token for user {UserId}", user.Id);
 
-            return new AuthResponseDto
-            {
-                AccessToken = accessToken,
-                RefreshToken = newRefreshTokenEntity.Token,
-                AccessTokenExpiresAt = expiresAt,
-                Email = user.Email,
-                FullName = user.FullName,
-                PictureUrl = user.PictureUrl
-            };
+            var response = _mapper.Map<AuthResponseDto>(user);
+            response.AccessToken = accessToken;
+            response.RefreshToken = newRefreshTokenEntity.Token;
+            response.AccessTokenExpiresAt = expiresAt;
+
+            return response;
         }
         catch (InvalidTokenException)
         {
-            throw; // Re-throw custom exceptions
+            throw; 
         }
         catch (Exception ex)
         {
@@ -145,7 +144,6 @@ public class AuthService : IAuthService
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error during logout");
-            // Don't throw - logout should be idempotent
         }
     }
 }

@@ -35,56 +35,86 @@ public class AuthController : ControllerBase
     /// Initiates Google OAuth login flow.
     /// </summary>
     [HttpGet("login")]
-    public IActionResult Login()
+    [AllowAnonymous]
+    public IActionResult Login(string? returnUrl = null)
     {
-
-        var properties = new AuthenticationProperties
+        try
         {
-            RedirectUri = Url.Action("OAuthComplete")
-        };
-        return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+            _logger.LogInformation("Login initiated");
+            _logger.LogDebug("Request scheme: {Scheme}, Host: {Host}",
+                Request.Scheme, Request.Host);
+
+            // ✅ Generate fully qualified callback URL
+            var callbackUrl = Url.Action("OAuthComplete", "Auth", null, Request.Scheme);
+
+            _logger.LogDebug("Callback URL: {CallbackUrl}", callbackUrl);
+
+            var properties = new AuthenticationProperties
+            {
+                RedirectUri = callbackUrl,
+                Items =
+                {
+                    { "scheme", GoogleDefaults.AuthenticationScheme },
+                    { "returnUrl", returnUrl ?? "/" }
+                }
+            };
+
+            _logger.LogInformation("Initiating Google challenge");
+
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error initiating login");
+            return BadRequest(new { message = "Failed to initiate login" });
+        }
     }
 
     /// <summary>
-    /// Handles OAuth callback after successful Google authentication.
-    /// Creates or updates user and returns JWT tokens.
+    /// Handles OAuth callback from Google.
     /// </summary>
     [HttpGet("oauth-complete")]
+    [AllowAnonymous]
     public async Task<IActionResult> OAuthComplete()
     {
         try
         {
+            _logger.LogInformation("OAuth complete called");
+
+            var cookies = string.Join(", ", HttpContext.Request.Cookies.Keys);
+            _logger.LogDebug("Cookies received: {Cookies}", cookies);
+
             var result = await HttpContext.AuthenticateAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
 
             if (!result.Succeeded)
             {
-                _logger.LogWarning("Google authentication failed. Reason: {Failure}",
-                    result.Failure?.Message);
-                return Unauthorized(new { message = "Google authentication failed." });
+                _logger.LogError("Authentication failed: {Failure}", result.Failure?.Message);
+                return Unauthorized(new { message = "Google authentication failed" });
             }
 
-            // Extract claims from Google token
-            var email = result.Principal?.FindFirst(ClaimTypes.Email)?.Value;
-            var name = result.Principal?.FindFirst(ClaimTypes.Name)?.Value;
-            var googleId = result.Principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var pictureUrl = result.Principal?.FindFirst("picture")?.Value;
-
-            // Validate required claims
-            if (string.IsNullOrEmpty(email))
+            var principal = result.Principal;
+            if (principal == null)
             {
-                _logger.LogWarning("Google callback missing email claim");
-                return Unauthorized(new { message = "Email not provided by Google." });
+                _logger.LogError("No principal in result");
+                return Unauthorized(new { message = "Invalid authentication state" });
             }
 
-            if (string.IsNullOrEmpty(googleId))
+            var email = principal.FindFirst(ClaimTypes.Email)?.Value;
+            var name = principal.FindFirst(ClaimTypes.Name)?.Value;
+            var googleId = principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var pictureUrl = principal.FindFirst("picture")?.Value;
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(googleId))
             {
-                _logger.LogWarning("Google callback missing NameIdentifier claim");
-                return Unauthorized(new { message = "Google ID not provided." });
+                _logger.LogError("Missing email or googleId");
+                return Unauthorized(new { message = "Missing required claims" });
             }
+
+            _logger.LogInformation("OAuth successful for email: {Email}", email);
 
             var user = await _userRepo.GetByEmailAsync(email);
-            var pictureUrls = result.Principal?.FindFirst("picture")?.Value;
+
             if (user == null)
             {
                 user = new User
@@ -93,14 +123,12 @@ public class AuthController : ControllerBase
                     Email = email,
                     FullName = name ?? "Google User",
                     GoogleId = googleId,
-                    PictureUrl = pictureUrls 
+                    PictureUrl = pictureUrl
                 };
 
                 await _userRepo.AddAsync(user);
                 await _userRepo.SaveChangesAsync();
-
-                _logger.LogInformation("New user created via Google OAuth. UserId: {UserId}, Email: {Email}",
-                    user.Id, user.Email);
+                _logger.LogInformation("User created: {UserId}", user.Id);
             }
             else if (string.IsNullOrEmpty(user.GoogleId))
             {
@@ -109,40 +137,34 @@ public class AuthController : ControllerBase
                 {
                     user.PictureUrl = pictureUrl;
                 }
-
                 await _userRepo.UpdateAsync(user);
                 await _userRepo.SaveChangesAsync();
-
-                _logger.LogInformation("Linked Google account to existing user. UserId: {UserId}", user.Id);
             }
 
             var tokens = await _authService.GenerateTokensForUserAsync(user);
 
-           
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            _logger.LogInformation("User logged in successfully. UserId: {UserId}", user.Id);
+            _logger.LogInformation("User logged in successfully: {UserId}", user.Id);
 
             return Ok(tokens);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error in OAuthComplete");
-            return StatusCode(StatusCodes.Status500InternalServerError,
-                new { message = "An error occurred during authentication." });
+            _logger.LogError(ex, "Error in OAuthComplete");
+            return StatusCode(500, new { message = "Authentication error" });
         }
     }
 
-    /// <summary>
-    /// Refreshes expired access token using a valid refresh token.
-    /// </summary>
     [HttpPost("refresh")]
+    [AllowAnonymous]
     public async Task<IActionResult> Refresh([FromBody] RefreshTokenRequestDto dto)
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(dto.RefreshToken))
+            if (string.IsNullOrWhiteSpace(dto?.RefreshToken))
             {
-                return BadRequest(new { message = "Refresh token is required." });
+                return BadRequest(new { message = "Refresh token required" });
             }
 
             var result = await _authService.RefreshAccessTokenAsync(dto.RefreshToken);
@@ -150,65 +172,57 @@ public class AuthController : ControllerBase
         }
         catch (InvalidTokenException ex)
         {
-            _logger.LogWarning("Invalid refresh token attempt: {Message}", ex.Message);
+            _logger.LogWarning("Invalid refresh token: {Message}", ex.Message);
             return Unauthorized(new { message = ex.Message });
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error refreshing token");
-            return StatusCode(StatusCodes.Status500InternalServerError,
-                new { message = "An error occurred while refreshing token." });
+            return StatusCode(500, new { message = "Error refreshing token" });
         }
     }
 
-    /// <summary>
-    /// Logs out the user by invalidating their refresh token.
-    /// </summary>
     [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout([FromBody] RefreshTokenRequestDto dto)
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(dto.RefreshToken))
+            if (string.IsNullOrWhiteSpace(dto?.RefreshToken))
             {
-                return BadRequest(new { message = "Refresh token is required." });
+                return BadRequest(new { message = "Refresh token required" });
             }
 
             await _authService.LogoutAsync(dto.RefreshToken);
 
-            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            _logger.LogInformation("User logged out. UserId: {UserId}", userId);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            _logger.LogInformation("User logged out: {UserId}", userId);
 
             return NoContent();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error during logout");
-            return StatusCode(StatusCodes.Status500InternalServerError,
-                new { message = "An error occurred during logout." });
+            return StatusCode(500, new { message = "Logout error" });
         }
     }
 
-    /// <summary>
-    /// Returns current authenticated user's information.
-    /// </summary>
     [Authorize]
     [HttpGet("me")]
     public async Task<IActionResult> Me()
     {
         try
         {
-            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!Guid.TryParse(userIdClaim, out var userId))
             {
-                return Unauthorized(new { message = "Invalid user ID in token." });
+                return Unauthorized(new { message = "Invalid user ID" });
             }
 
             var user = await _userRepo.GetByIdAsync(userId);
             if (user == null)
             {
-                return NotFound(new { message = "User not found." });
+                return NotFound(new { message = "User not found" });
             }
 
             return Ok(new
@@ -223,9 +237,8 @@ public class AuthController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving user information");
-            return StatusCode(StatusCodes.Status500InternalServerError,
-                new { message = "An error occurred while retrieving user information." });
+            _logger.LogError(ex, "Error retrieving user");
+            return StatusCode(500, new { message = "Error retrieving user" });
         }
     }
 }
