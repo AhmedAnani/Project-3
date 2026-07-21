@@ -6,13 +6,17 @@ public class TripItemResponseDto
 {
     public int Id { get; set; }
 
+    public string Title { get; set; } = string.Empty;
+
     public string CountryCode { get; set; } = string.Empty;
 
     public string CountryName { get; set; } = string.Empty;
 
     public TripStatus Status { get; set; }
 
-    public DateTime? TargetDate { get; set; }
+    public DateTime StartDate { get; set; }
+
+    public DateTime EndDate { get; set; }
 
     public DateTime? VisitedDate { get; set; }
 

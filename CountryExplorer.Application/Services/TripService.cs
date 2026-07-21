@@ -45,28 +45,24 @@ public class TripService : ITripService
     {
         var trip = _mapper.Map<TripBucketItem>(dto);
         trip.UserId = userId;
+        trip.CountryName = "Pending Lookup";
         trip.Status = TripStatus.Planned;
 
         trip = await _tripRepository.AddAsync(trip);
 
         if (dto.SyncWithGoogleCalendar)
         {
-            if (!string.IsNullOrWhiteSpace(googleAccessToken))
+            // TODO: Replace hardcoded test Google token with the real token from header/claims once Auth is merged.
+            var hardcodedGoogleToken = "ya29.a0ARGnu0bqewU26DBFP4NrDXCOCJyp8IDFXKekqR8cDUVverqBIYPr_2zCtj1E2xalGzt7ZIbif4UbBYt7csSqTSHPrGRdGw0TM85WhY2yiWi-34HlRoaGKTXuF2eZDDrubBvQFo5YufgvKYa9bwy7ry-w4mZ_AbY_K2Sn4vybkudlJFCjE3fGNHtU36lVjciANXExgjgaCgYKAZwSARQSFQHGX2Miam_aYAIkwsHKrx9PAhPtnw0206";
+            var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(hardcodedGoogleToken, trip);
+            if (!string.IsNullOrWhiteSpace(googleEventId))
             {
-                var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(googleAccessToken, trip);
-                if (!string.IsNullOrWhiteSpace(googleEventId))
-                {
-                    trip.GoogleEventId = googleEventId;
-                    trip = await _tripRepository.UpdateAsync(trip);
-                }
-                else
-                {
-                    _logger.LogWarning("Google Calendar event creation failed for trip {TripId}.", trip.Id);
-                }
+                trip.GoogleEventId = googleEventId;
+                trip = await _tripRepository.UpdateAsync(trip);
             }
             else
             {
-                _logger.LogWarning("Google sync requested for trip creation but no access token was provided for user {UserId}.", userId);
+                _logger.LogWarning("Google Calendar event creation failed for trip {TripId}.", trip.Id);
             }
         }
 
@@ -81,6 +77,7 @@ public class TripService : ITripService
         var previousGoogleEventId = trip.GoogleEventId;
 
         _mapper.Map(dto, trip);
+        trip.CountryName = "Pending Lookup";
         trip.UpdatedAt = DateTime.UtcNow;
 
         trip = await _tripRepository.UpdateAsync(trip);
@@ -110,7 +107,9 @@ public class TripService : ITripService
         {
             if (string.IsNullOrWhiteSpace(previousGoogleEventId))
             {
-                var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(googleAccessToken, trip);
+                // TODO: Replace hardcoded test Google token with the real token from header/claims once Auth is merged.
+                var hardcodedGoogleToken = "ya29.a0ARGnu0bqewU26DBFP4NrDXCOCJyp8IDFXKekqR8cDUVverqBIYPr_2zCtj1E2xalGzt7ZIbif4UbBYt7csSqTSHPrGRdGw0TM85WhY2yiWi-34HlRoaGKTXuF2eZDDrubBvQFo5YufgvKYa9bwy7ry-w4mZ_AbY_K2Sn4vybkudlJFCjE3fGNHtU36lVjciANXExgjgaCgYKAZwSARQSFQHGX2Miam_aYAIkwsHKrx9PAhPtnw0206";
+                var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(hardcodedGoogleToken, trip);
                 if (!string.IsNullOrWhiteSpace(googleEventId))
                 {
                     trip.GoogleEventId = googleEventId;

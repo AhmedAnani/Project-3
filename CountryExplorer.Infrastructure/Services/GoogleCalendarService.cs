@@ -22,25 +22,26 @@ public class GoogleCalendarService : IGoogleCalendarService
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(googleAccessToken) || trip.TargetDate is null)
+            if (string.IsNullOrWhiteSpace(googleAccessToken))
             {
                 return null;
             }
 
             var service = CreateCalendarService(googleAccessToken);
-            var tripDate = trip.TargetDate.Value.ToUniversalTime().Date;
+            var startDate = trip.StartDate.ToUniversalTime().Date;
+            var endDate = trip.EndDate.ToUniversalTime().Date;
 
             var calendarEvent = new Event
             {
-                Summary = trip.CountryName,
+                Summary = trip.Title,
                 Description = trip.Notes,
                 Start = new EventDateTime
                 {
-                    Date = tripDate.ToString("yyyy-MM-dd")
+                    Date = startDate.ToString("yyyy-MM-dd")
                 },
                 End = new EventDateTime
                 {
-                    Date = tripDate.AddDays(1).ToString("yyyy-MM-dd")
+                    Date = endDate.AddDays(1).ToString("yyyy-MM-dd")
                 }
             };
 
@@ -60,25 +61,26 @@ public class GoogleCalendarService : IGoogleCalendarService
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(googleAccessToken) || string.IsNullOrWhiteSpace(trip.GoogleEventId) || trip.TargetDate is null)
+            if (string.IsNullOrWhiteSpace(googleAccessToken) || string.IsNullOrWhiteSpace(trip.GoogleEventId))
             {
                 return false;
             }
 
             var service = CreateCalendarService(googleAccessToken);
-            var tripDate = trip.TargetDate.Value.ToUniversalTime().Date;
+            var startDate = trip.StartDate.ToUniversalTime().Date;
+            var endDate = trip.EndDate.ToUniversalTime().Date;
 
             var calendarEvent = new Event
             {
-                Summary = trip.CountryName,
+                Summary = trip.Title,
                 Description = trip.Notes,
                 Start = new EventDateTime
                 {
-                    Date = tripDate.ToString("yyyy-MM-dd")
+                    Date = startDate.ToString("yyyy-MM-dd")
                 },
                 End = new EventDateTime
                 {
-                    Date = tripDate.AddDays(1).ToString("yyyy-MM-dd")
+                    Date = endDate.AddDays(1).ToString("yyyy-MM-dd")
                 }
             };
 

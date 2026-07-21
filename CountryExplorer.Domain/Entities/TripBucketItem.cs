@@ -6,10 +6,12 @@ public class TripBucketItem
 {
     public int Id { get; set; }
     public Guid UserId { get; set; }
+    public string Title { get; set; } = string.Empty;
     public string CountryCode { get; set; } = string.Empty;
     public string CountryName { get; set; } = string.Empty;
     public TripStatus Status { get; set; } = TripStatus.Planned;
-    public DateTime? TargetDate { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
     public DateTime? VisitedDate { get; set; }
     public string? Notes { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
