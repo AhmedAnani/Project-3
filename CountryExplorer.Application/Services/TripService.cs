@@ -52,17 +52,22 @@ public class TripService : ITripService
 
         if (dto.SyncWithGoogleCalendar)
         {
-            // TODO: Replace hardcoded test Google token with the real token from header/claims once Auth is merged.
-            var hardcodedGoogleToken = "ya29.a0ARGnu0bqewU26DBFP4NrDXCOCJyp8IDFXKekqR8cDUVverqBIYPr_2zCtj1E2xalGzt7ZIbif4UbBYt7csSqTSHPrGRdGw0TM85WhY2yiWi-34HlRoaGKTXuF2eZDDrubBvQFo5YufgvKYa9bwy7ry-w4mZ_AbY_K2Sn4vybkudlJFCjE3fGNHtU36lVjciANXExgjgaCgYKAZwSARQSFQHGX2Miam_aYAIkwsHKrx9PAhPtnw0206";
-            var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(hardcodedGoogleToken, trip);
-            if (!string.IsNullOrWhiteSpace(googleEventId))
+            if (!string.IsNullOrWhiteSpace(googleAccessToken))
             {
-                trip.GoogleEventId = googleEventId;
-                trip = await _tripRepository.UpdateAsync(trip);
+                var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(googleAccessToken, trip);
+                if (!string.IsNullOrWhiteSpace(googleEventId))
+                {
+                    trip.GoogleEventId = googleEventId;
+                    trip = await _tripRepository.UpdateAsync(trip);
+                }
+                else
+                {
+                    _logger.LogWarning("Google Calendar event creation failed for trip {TripId}.", trip.Id);
+                }
             }
             else
             {
-                _logger.LogWarning("Google Calendar event creation failed for trip {TripId}.", trip.Id);
+                _logger.LogWarning("Google sync requested for trip creation but no access token was provided for user {UserId}.", userId);
             }
         }
 
@@ -107,9 +112,7 @@ public class TripService : ITripService
         {
             if (string.IsNullOrWhiteSpace(previousGoogleEventId))
             {
-                // TODO: Replace hardcoded test Google token with the real token from header/claims once Auth is merged.
-                var hardcodedGoogleToken = "ya29.a0ARGnu0bqewU26DBFP4NrDXCOCJyp8IDFXKekqR8cDUVverqBIYPr_2zCtj1E2xalGzt7ZIbif4UbBYt7csSqTSHPrGRdGw0TM85WhY2yiWi-34HlRoaGKTXuF2eZDDrubBvQFo5YufgvKYa9bwy7ry-w4mZ_AbY_K2Sn4vybkudlJFCjE3fGNHtU36lVjciANXExgjgaCgYKAZwSARQSFQHGX2Miam_aYAIkwsHKrx9PAhPtnw0206";
-                var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(hardcodedGoogleToken, trip);
+                var googleEventId = await _googleCalendarService.ScheduleTripEventAsync(googleAccessToken, trip);
                 if (!string.IsNullOrWhiteSpace(googleEventId))
                 {
                     trip.GoogleEventId = googleEventId;

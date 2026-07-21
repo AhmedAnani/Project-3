@@ -12,8 +12,7 @@ namespace CountryExplorer.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-// TODO: Re-enable [Authorize] once authentication middleware is configured by the team.
-// [Authorize]
+[Authorize]
 public class TripsController(ITripService tripService) : ControllerBase
 {
     /// <summary>
@@ -21,11 +20,14 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// </summary>
     /// <returns>The user ID as a GUID.</returns>
     /// <exception cref="UnauthorizedAccessException">Thrown when the user ID cannot be extracted from claims.</exception>
-    // TODO: Replace hardcoded test user ID with actual claims extraction once authentication is merged.
     private Guid GetUserId()
     {
-        // Temporary hardcoded test user ID for testing CRUD operations during development.
-        return Guid.Parse("11111111-1111-1111-1111-111111111111");
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+        {
+            throw new UnauthorizedAccessException("User ID could not be extracted from claims.");
+        }
+        return userId;
     }
 
     /// <summary>
