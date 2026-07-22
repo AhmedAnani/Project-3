@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CountryExplorer.Application.Dtos.Auth;
+using CountryExplorer.Application.Mappings;
 using CountryExplorer.Application.Services.Interfaces;
 using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
@@ -11,6 +12,7 @@ namespace CountryExplorer.Application.Services;
 
 /// <summary>
 /// Handles authentication operations including token generation, refresh, and logout.
+/// Uses AutoMapper extension methods for clean DTO mapping.
 /// </summary>
 public class AuthService : IAuthService
 {
@@ -19,8 +21,11 @@ public class AuthService : IAuthService
     private readonly ILogger<AuthService> _logger;
     private readonly IMapper _mapper;
 
-    public AuthService(IUserRepository userRepo, IJwtService jwtService, 
-        ILogger<AuthService> logger, IMapper mapper)
+    public AuthService(
+        IUserRepository userRepo,
+        IJwtService jwtService,
+        ILogger<AuthService> logger,
+        IMapper mapper)
     {
         _userRepo = userRepo;
         _jwtService = jwtService;
@@ -47,13 +52,7 @@ public class AuthService : IAuthService
 
             _logger.LogDebug("Generated tokens for user {UserId}", user.Id);
 
-            var response = _mapper.Map<AuthResponseDto>(user);
-            response.AccessToken = accessToken;
-            response.RefreshToken = refreshTokenEntity.Token;
-            response.AccessTokenExpiresAt = expiresAt;
-
-            return response;
-
+            return _mapper.MapToAuthResponse(user, accessToken, refreshTokenEntity.Token, expiresAt);
         }
         catch (Exception ex)
         {
@@ -64,9 +63,8 @@ public class AuthService : IAuthService
 
     /// <summary>
     /// Refreshes an expired access token using a valid refresh token.
-    /// Implements token rotation: invalidates old token and creates new one.
+    /// Implements secure token rotation: revokes old token and creates new one.
     /// </summary>
-    /// <exception cref="InvalidTokenException">Thrown when refresh token is invalid or expired.</exception>
     public async Task<AuthResponseDto> RefreshAccessTokenAsync(string refreshToken)
     {
         try
@@ -75,20 +73,25 @@ public class AuthService : IAuthService
                 throw new InvalidTokenException("Refresh token cannot be empty.");
 
             var storedToken = await _userRepo.GetRefreshTokenAsync(refreshToken);
-            
             if (storedToken == null)
+            {
+                _logger.LogWarning("Refresh token not found or expired");
                 throw new InvalidTokenException("Invalid or expired refresh token.");
+            }
 
-            // Validate token is active (not revoked and not expired)
             if (!storedToken.IsActive)
+            {
+                _logger.LogWarning("Refresh token is not active for user {UserId}", storedToken.UserId);
                 throw new InvalidTokenException("Refresh token has been revoked or has expired.");
+            }
 
             var user = storedToken.User;
             if (user == null)
                 throw new InvalidTokenException("User associated with token not found.");
 
-            // Token rotation: remove old token and create new one
-            _userRepo.RemoveRefreshToken(storedToken);
+            storedToken.Revoke();
+            await _userRepo.SaveChangesAsync();
+
             var newRefreshTokenEntity = _jwtService.CreateRefreshTokenEntity(user.Id);
             await _userRepo.AddRefreshTokenAsync(newRefreshTokenEntity);
             await _userRepo.SaveChangesAsync();
@@ -98,16 +101,11 @@ public class AuthService : IAuthService
 
             _logger.LogDebug("Refreshed token for user {UserId}", user.Id);
 
-            var response = _mapper.Map<AuthResponseDto>(user);
-            response.AccessToken = accessToken;
-            response.RefreshToken = newRefreshTokenEntity.Token;
-            response.AccessTokenExpiresAt = expiresAt;
-
-            return response;
+            return _mapper.MapToAuthResponse(user, accessToken, newRefreshTokenEntity.Token, expiresAt);
         }
         catch (InvalidTokenException)
         {
-            throw; 
+            throw;
         }
         catch (Exception ex)
         {
@@ -132,13 +130,13 @@ public class AuthService : IAuthService
             var storedToken = await _userRepo.GetRefreshTokenAsync(refreshToken);
             if (storedToken != null)
             {
-                _userRepo.RemoveRefreshToken(storedToken);
+                storedToken.Revoke();
                 await _userRepo.SaveChangesAsync();
                 _logger.LogInformation("User {UserId} logged out successfully", storedToken.UserId);
             }
             else
             {
-                _logger.LogWarning("Logout attempted with invalid refresh token");
+                _logger.LogWarning("Logout attempted with invalid or expired refresh token");
             }
         }
         catch (Exception ex)

@@ -3,28 +3,80 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\countryexplorer.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\countryexplorer.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\countryexplorer.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\countryexplorer.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\dtos\\auth\\userprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\dtos\\auth\\userprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\extensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\extensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\services\\googleauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\services\\googleauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\mappings\\authprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\mappings\\authprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\mappings\\authprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\mappings\\authprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\services\\interfaces\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\services\\interfaces\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\mappings\\authmappingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\mappings\\authmappingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\dtos\\auth\\refreshtokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\dtos\\auth\\refreshtokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\dtos\\auth\\refreshtokenrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\dtos\\auth\\refreshtokenrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\enums\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\enums\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\middleware\\ratelimitingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,6 +95,18 @@
       "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\exceptions\\invalidtokenexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\entities\\tripbucketitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\entities\\tripbucketitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\countryexplorer.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\countryexplorer.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\countryexplorer.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\countryexplorer.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\middleware\\middlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\middleware\\middlewareextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -59,46 +123,6 @@
       "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\countryexplorer.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\enums\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\enums\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\dtos\\auth\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\dtos\\auth\\refreshtokenrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\dtos\\auth\\refreshtokenrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\services\\googleauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\services\\googleauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\entities\\tripbucketitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\entities\\tripbucketitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.domain\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{173B4A78-6C1C-D104-BED5-50B37F8E3F83}|CountryExplorer.Domain\\CountryExplorer.Domain.csproj|solutionrelative:countryexplorer.domain\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\persistence\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.infrastructure\\seeding\\dbseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\seeding\\dbseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -107,20 +131,12 @@
       "RelativeMoniker": "D:0:0:{7B6BC644-A150-F350-62ED-FE36B0AFD986}|CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj|solutionrelative:countryexplorer.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1D4C0214-7577-66CE-F137-388356E8A7A4}|CountryExplorer.Api\\CountryExplorer.Api.csproj|solutionrelative:countryexplorer.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\services\\interfaces\\igoogleauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\services\\interfaces\\igoogleauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|c:\\users\\pc\\source\\repos\\project-3\\project-3\\countryexplorer.application\\services\\interfaces\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB47D9A5-FB41-7DB5-A28C-A70764ABAB94}|CountryExplorer.Application\\CountryExplorer.Application.csproj|solutionrelative:countryexplorer.application\\services\\interfaces\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -130,266 +146,125 @@
       "DocumentGroups": [
         {
           "DockedWidth": 253,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Application\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\AuthService.cs",
-              "RelativeToolTip": "CountryExplorer.Application\\Services\\AuthService.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAiwJQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T10:49:28.906Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Program.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Api\\Program.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Program.cs",
               "RelativeToolTip": "CountryExplorer.Api\\Program.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAqwC0AAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAgwF0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-19T11:52:15.535Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CountryExplorer.Api",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\CountryExplorer.Api.csproj",
-              "RelativeDocumentMoniker": "CountryExplorer.Api\\CountryExplorer.Api.csproj",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\CountryExplorer.Api.csproj",
-              "RelativeToolTip": "CountryExplorer.Api\\CountryExplorer.Api.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-20T16:19:42.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CountryExplorer.Application",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\CountryExplorer.Application.csproj",
-              "RelativeDocumentMoniker": "CountryExplorer.Application\\CountryExplorer.Application.csproj",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\CountryExplorer.Application.csproj",
-              "RelativeToolTip": "CountryExplorer.Application\\CountryExplorer.Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-20T16:28:50.306Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Api\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Controllers\\AuthController.cs",
               "RelativeToolTip": "CountryExplorer.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAswH0AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-19T12:14:28.07Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T09:20:18.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\UserProfileDto.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Dtos\\Auth\\UserProfileDto.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\UserProfileDto.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Dtos\\Auth\\UserProfileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T20:31:01.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T09:27:39.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AuthProfile.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Mappings\\AuthProfile.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Application\\Mappings\\AuthProfile.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Mappings\\AuthProfile.cs",
-              "RelativeToolTip": "CountryExplorer.Application\\Mappings\\AuthProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Title": "AuthorizationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Extensions\\AuthorizationExtensions.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Api\\Extensions\\AuthorizationExtensions.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Extensions\\AuthorizationExtensions.cs",
+              "RelativeToolTip": "CountryExplorer.Api\\Extensions\\AuthorizationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-20T15:18:42.704Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RateLimitingMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
-              "RelativeToolTip": "CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T16:27:42.538Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RateLimitExceededException.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-20T16:32:50.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserCreationException.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T19:05:06.938Z",
+              "WhenOpened": "2026-07-22T19:31:28.697Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "MiddlewareExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
-              "RelativeToolTip": "CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-20T16:00:29.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T11:12:34.736Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ExceptionHandlingMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "RelativeToolTip": "CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAiwFYAAAABAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "CountryExplorer.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\appsettings.json",
+              "RelativeToolTip": "CountryExplorer.Api\\appsettings.json",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-19T12:37:17.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AuthProfile.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Mappings\\AuthProfile.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Mappings\\AuthProfile.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Mappings\\AuthProfile.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Mappings\\AuthProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T16:25:56.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-20T15:18:42.704Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "InvalidTokenException.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T19:04:46.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CountryExplorer.Infrastructure",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
-              "RelativeToolTip": "CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-20T16:29:02.966Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CountryExplorer.Domain",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
-              "RelativeToolTip": "CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-20T16:28:55.322Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Enums.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Enums\\Enums.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Enums\\Enums.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Enums\\Enums.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Enums\\Enums.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T09:04:47.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "TripBucketItem.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T08:50:54.672Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "RefreshToken.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\RefreshToken.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Entities\\RefreshToken.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\RefreshToken.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Entities\\RefreshToken.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAwwBMAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T08:58:38.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "RefreshTokenRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
-              "RelativeToolTip": "CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T11:10:41.451Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AuthResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
-              "RelativeToolTip": "CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T11:11:02.695Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 6,
               "Title": "GoogleAuthService.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Services\\GoogleAuthService.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\Services\\GoogleAuthService.cs",
@@ -402,59 +277,247 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 9,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\AuthService.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Services\\AuthService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCQAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T10:49:28.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\Services\\JwtService.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Services\\JwtService.cs",
               "RelativeToolTip": "CountryExplorer.Infrastructure\\Services\\JwtService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T10:36:42.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T10:36:42.719Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 12,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Entities\\RefreshToken.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\RefreshToken.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Entities\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T08:58:38.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Dtos\\Auth\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T11:11:02.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthMappingExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Mappings\\AuthMappingExtensions.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Mappings\\AuthMappingExtensions.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Mappings\\AuthMappingExtensions.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Mappings\\AuthMappingExtensions.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T20:56:42.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RefreshTokenDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenDto.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenDto.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenDto.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T20:50:23.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RefreshTokenRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
+              "RelativeToolTip": "CountryExplorer.Application\\Dtos\\Auth\\RefreshTokenRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T11:10:41.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Domain\\Entities\\User.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\User.cs",
               "RelativeToolTip": "CountryExplorer.Domain\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T08:38:03.742Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T08:38:03.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Enums.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Enums\\Enums.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Enums\\Enums.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Enums\\Enums.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Enums\\Enums.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T09:04:47.144Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "RateLimitingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
+              "RelativeToolTip": "CountryExplorer.Api\\Middleware\\RateLimitingMiddleware.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAiwHAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T16:27:42.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RateLimitExceededException.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Exceptions\\RateLimitExceededException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-20T16:32:50.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserCreationException.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Exceptions\\UserCreationException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T19:05:06.938Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
-              "RelativeToolTip": "CountryExplorer.Domain\\Repositories\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABSAAAAAAAAAA==",
+              "Title": "InvalidTokenException.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Exceptions\\InvalidTokenException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T09:20:18.524Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T19:04:46.4Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "CountryExplorer.Infrastructure\\Persistence\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "TripBucketItem.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
+              "RelativeToolTip": "CountryExplorer.Domain\\Entities\\TripBucketItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T09:27:39.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T08:50:54.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CountryExplorer.Application.csproj",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\CountryExplorer.Application.csproj",
+              "RelativeDocumentMoniker": "CountryExplorer.Application\\CountryExplorer.Application.csproj",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\CountryExplorer.Application.csproj",
+              "RelativeToolTip": "CountryExplorer.Application\\CountryExplorer.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-20T16:28:50.306Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 24,
+              "Title": "CountryExplorer.Api.csproj",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\CountryExplorer.Api.csproj",
+              "RelativeDocumentMoniker": "CountryExplorer.Api\\CountryExplorer.Api.csproj",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\CountryExplorer.Api.csproj",
+              "RelativeToolTip": "CountryExplorer.Api\\CountryExplorer.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-20T16:19:42.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "MiddlewareExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
+              "RelativeToolTip": "CountryExplorer.Api\\Middleware\\MiddlewareExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-20T16:00:29.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "CountryExplorer.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAiwFYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T16:25:56.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CountryExplorer.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
+              "RelativeToolTip": "CountryExplorer.Infrastructure\\CountryExplorer.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-20T16:29:02.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CountryExplorer.Domain.csproj",
+              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
+              "RelativeDocumentMoniker": "CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
+              "RelativeToolTip": "CountryExplorer.Domain\\CountryExplorer.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-20T16:28:55.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "DbSeed.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\seeding\\DbSeed.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\seeding\\DbSeed.cs",
@@ -462,12 +525,11 @@
               "RelativeToolTip": "CountryExplorer.Infrastructure\\seeding\\DbSeed.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAUwD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T11:24:11.126Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T11:24:11.126Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Infrastructure\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Infrastructure\\Data\\AppDbContext.cs",
@@ -475,25 +537,11 @@
               "RelativeToolTip": "CountryExplorer.Infrastructure\\Data\\AppDbContext.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAcwBkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T11:24:56.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T11:24:56.675Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "CountryExplorer.Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Api\\appsettings.json",
-              "RelativeToolTip": "CountryExplorer.Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-19T12:37:17.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\Interfaces\\IAuthService.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Application\\Services\\Interfaces\\IAuthService.cs",
@@ -501,12 +549,11 @@
               "RelativeToolTip": "CountryExplorer.Application\\Services\\Interfaces\\IAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T09:26:23.115Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T09:26:23.115Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "IGoogleAuthService.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\Interfaces\\IGoogleAuthService.cs",
               "RelativeDocumentMoniker": "CountryExplorer.Application\\Services\\Interfaces\\IGoogleAuthService.cs",
@@ -514,21 +561,7 @@
               "RelativeToolTip": "CountryExplorer.Application\\Services\\Interfaces\\IGoogleAuthService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T11:12:51.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "IJwtService.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
-              "RelativeDocumentMoniker": "CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Project-3\\Project-3\\CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
-              "RelativeToolTip": "CountryExplorer.Application\\Services\\Interfaces\\IJwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-19T11:12:34.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-19T11:12:51.805Z"
             }
           ]
         }

@@ -13,6 +13,6 @@ public enum TripStatus
 }
 public enum  ExpirationTime
 {        
-    RefreshToken = 2,
+    RefreshToken = 30,
     AccessToken = 15
 }

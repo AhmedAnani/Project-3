@@ -13,7 +13,7 @@ public class RefreshToken
     public Guid Id { get; set; }
 
     /// <summary>
-    /// The token string value (base64 encoded).
+    /// The token string value (
     /// </summary>
     public string Token { get; set; } = string.Empty;
 
@@ -30,21 +30,45 @@ public class RefreshToken
     /// <summary>
     /// When this token was created.
     /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; }
 
     /// <summary>
-    /// When this token expires (30 days from creation).
+    /// When this token expires.
     /// </summary>
-    public DateTime ExpiresAt { get; set; } =
-        DateTime.UtcNow.AddDays((int)ExpirationTime.RefreshToken);
+    public DateTime ExpiresAt { get; set; }
 
     /// <summary>
-    /// When this token was revoked (null if still active).
+    /// When this token was revoked .
     /// </summary>
     public DateTime? RevokedAt { get; set; }
 
     /// <summary>
-    /// Indicates whether this token is currently active.
+    /// Indicates whether this token is currently active 
     /// </summary>
     public bool IsActive => RevokedAt == null && DateTime.UtcNow <= ExpiresAt;
+
+    /// <summary>
+    /// Creates a refresh token with proper timestamp initialization.
+    /// </summary>
+    public static RefreshToken Create(Guid userId, string tokenValue)
+    {
+        var now = DateTime.UtcNow;
+        return new RefreshToken
+        {
+            Id = Guid.NewGuid(),
+            Token = tokenValue,
+            UserId = userId,
+            CreatedAt = now,
+            ExpiresAt = now.AddDays((int)ExpirationTime.RefreshToken),
+            RevokedAt = null
+        };
+    }
+
+    /// <summary>
+    /// Revokes the token instead of deleting it 
+    /// </summary>
+    public void Revoke()
+    {
+        RevokedAt = DateTime.UtcNow;
+    }
 }

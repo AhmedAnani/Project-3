@@ -12,14 +12,24 @@ namespace CountryExplorer.Api.Middleware;
 public class RateLimitingMiddleware
 {
     private readonly RequestDelegate _next;
-    private static readonly ConcurrentDictionary<string, Queue<DateTime>> _requests = new();
+    private readonly ILogger<RateLimitingMiddleware> _logger;
+    private readonly int _maxRequests;
+    private readonly TimeSpan _window;
+    private static readonly ConcurrentDictionary<string, ClientRateLimit> _requests = new();
+    private static DateTime _lastCleanup = DateTime.UtcNow;
+    private static readonly TimeSpan CleanupInterval = TimeSpan.FromMinutes(5);
 
-    private const int MaxRequests = 10;
-    private static readonly TimeSpan Window = TimeSpan.FromSeconds(10);
-
-    public RateLimitingMiddleware(RequestDelegate next)
+    public RateLimitingMiddleware(RequestDelegate next, IConfiguration config, ILogger<RateLimitingMiddleware> logger)
     {
         _next = next;
+        _logger = logger;
+
+        _maxRequests = int.TryParse(config["RateLimit:MaxRequests"], out var max) ? max : 100;
+        var windowSeconds = int.TryParse(config["RateLimit:WindowSeconds"], out var window) ? window : 60;
+        _window = TimeSpan.FromSeconds(windowSeconds);
+
+        _logger.LogInformation("Rate limiting configured: {MaxRequests} requests per {WindowSeconds} seconds",
+            _maxRequests, windowSeconds);
     }
 
     /// <summary>
@@ -31,31 +41,72 @@ public class RateLimitingMiddleware
         var clientId = GetClientId(context);
         var now = DateTime.UtcNow;
 
-        var queue = _requests.GetOrAdd(clientId, _ => new Queue<DateTime>());
-
-        lock (queue)
+        if (now - _lastCleanup > CleanupInterval)
         {
-            // Remove old requests
-            while (queue.Count > 0 && now - queue.Peek() > Window)
-                queue.Dequeue();
+            CleanupExpiredClients(now);
+            _lastCleanup = now;
+        }
 
-            if (queue.Count >= MaxRequests)
+        var clientLimit = _requests.GetOrAdd(clientId, _ => new ClientRateLimit());
+
+        lock (clientLimit)
+        {
+            while (clientLimit.RequestTimes.Count > 0 &&
+                   now - clientLimit.RequestTimes.Peek() > _window)
+            {
+                clientLimit.RequestTimes.Dequeue();
+            }
+
+            if (clientLimit.RequestTimes.Count >= _maxRequests)
+            {
+                var retryAfter = (int)Math.Ceiling(_window.TotalSeconds);
+                _logger.LogWarning("Rate limit exceeded for client {ClientId}. Retry after {RetryAfter}s",
+                    clientId, retryAfter);
+
                 throw new RateLimitExceededException(
-                    $"Too many requests. Please wait {Window.TotalSeconds} seconds.",
-                    (int)Window.TotalSeconds);
+                    $"Too many requests. Please wait {retryAfter} seconds.",
+                    retryAfter);
+            }
 
-            queue.Enqueue(now);
+            clientLimit.RequestTimes.Enqueue(now);
+            clientLimit.LastActivityAt = now;
         }
 
         await _next(context);
     }
 
+    /// <summary>
+    /// Removes clients that have been inactive for longer than the rate limit window.
+    /// Prevents unbounded memory growth.
+    /// </summary>
+    private static void CleanupExpiredClients(DateTime now)
+    {
+        var expiredClients = _requests
+            .Where(x => now - x.Value.LastActivityAt > TimeSpan.FromHours(1))
+            .Select(x => x.Key)
+            .ToList();
+
+        foreach (var client in expiredClients)
+        {
+            _requests.TryRemove(client, out _);
+        }
+    }
+
     private static string GetClientId(HttpContext context)
     {
         var userId = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        return !string.IsNullOrEmpty(userId) ? $"user:{userId}" : $"ip:{context.Connection.RemoteIpAddress}";
+        return !string.IsNullOrEmpty(userId)
+            ? $"user:{userId}"
+            : $"ip:{context.Connection.RemoteIpAddress}";
+    }
+
+    /// <summary>
+    /// Tracks request history for a single client.
+    /// </summary>
+    private class ClientRateLimit
+    {
+        public Queue<DateTime> RequestTimes { get; } = new();
+        public DateTime LastActivityAt { get; set; } = DateTime.UtcNow;
     }
 }
 
-
-    

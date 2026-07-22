@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CountryExplorer.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,8 @@ namespace CountryExplorer.Application.Dtos.Auth;
 
 public class AuthResponseDto
 {
+    public UserProfileDto User { get; set; } = null!;
     public string AccessToken { get; set; } = string.Empty;
     public string RefreshToken { get; set; } = string.Empty;
     public DateTime AccessTokenExpiresAt { get; set; }
-    public string Email { get; set; } = string.Empty;
-    public string FullName { get; set; } = string.Empty;
-    public string? PictureUrl { get; set; }
 }
