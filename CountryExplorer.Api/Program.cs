@@ -1,6 +1,13 @@
+using AutoMapper;
+using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.Services;
+using CountryExplorer.Infrastructure.ExternalServices;
+using CountryExplorer.Infrastructure.Mapping;
 using CountryExplorer.Infrastructure.Data;
 using CountryExplorer.Infrastructure.Seeding;
 using Microsoft.EntityFrameworkCore;
+using CountryExplorer.Api.Middlewares;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,11 +15,28 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddMemoryCache();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHttpClient<ICountryApiService, CountryApiService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.restcountries.com/countries/v5/");
+    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {builder.Configuration["RestCountries:ApiKey"]}");
+
+});
+
+builder.Services.AddHttpClient<ITouristAttractionService, TouristAttractionService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.opentripmap.com/0.1/en/places/");
+});
+
+builder.Services.AddScoped<ICountryExplorerService, CountryExplorerService>();
 
 var app = builder.Build();
 
@@ -41,6 +65,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
