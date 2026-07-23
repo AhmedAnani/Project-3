@@ -22,6 +22,7 @@ public class GlobalExceptionHandler : IExceptionHandler
     {
         CountryNotFoundException => (StatusCodes.Status404NotFound, "Not Found"),
         AttractionNotFoundException => (StatusCodes.Status404NotFound, "Not Found"),
+        CurrencyNotSupportedException => (StatusCodes.Status400BadRequest, exception.Message),
         ExternalServiceUnavailableException => (StatusCodes.Status503ServiceUnavailable, "Service Unavailable"),
         _ => (StatusCodes.Status500InternalServerError, "Internal Server Error")
     };

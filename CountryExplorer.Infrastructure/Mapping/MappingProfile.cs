@@ -9,6 +9,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<RestCountryCurrency, CurrencyDto>();    
         CreateMap<RestCountryResponse, CountryDto>()
             .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Codes.Alpha2))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Names.Common))
@@ -16,8 +17,6 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Capital, opt => opt.MapFrom(src =>
                 src.Capitals.Any() ? src.Capitals.First().Name : string.Empty))
             .ForMember(dest => dest.FlagUrl, opt => opt.MapFrom(src => src.Flag.UrlPng))
-            .ForMember(dest => dest.Currencies, opt => opt.MapFrom(src =>
-                src.Currencies.Select(c => c.Name).ToList()))
             .ForMember(dest => dest.Languages, opt => opt.MapFrom(src =>
                 src.Languages.Select(l => l.Name).ToList()))
             .ForMember(dest => dest.CapitalLatitude, opt => opt.MapFrom(src =>

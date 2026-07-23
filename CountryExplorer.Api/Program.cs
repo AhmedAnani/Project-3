@@ -36,6 +36,11 @@ builder.Services.AddHttpClient<ITouristAttractionService, TouristAttractionServi
     client.BaseAddress = new Uri("https://api.opentripmap.com/0.1/en/places/");
 });
 
+builder.Services.AddHttpClient<IExchangeRateService, ExchangeRateService>(client =>
+{
+    client.BaseAddress = new Uri("https://v6.exchangerate-api.com/v6/");
+});
+
 builder.Services.AddScoped<ICountryExplorerService, CountryExplorerService>();
 
 var app = builder.Build();

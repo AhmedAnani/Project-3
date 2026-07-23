@@ -8,7 +8,7 @@ public class CountryDto
     public string Capital { get; set; } = string.Empty;
     public string Region { get; set; } = string.Empty;
     public string Subregion { get; set; } = string.Empty;
-    public List<string> Currencies { get; set; } = new();
+    public List<CurrencyDto> Currencies { get; set; } = new();
     public List<string> Languages { get; set; } = new();
     public string FlagUrl { get; set; } = string.Empty;
     public long Population { get; set; }
