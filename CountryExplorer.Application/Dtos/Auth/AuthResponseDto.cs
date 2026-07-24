@@ -1,11 +1,4 @@
-﻿using CountryExplorer.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CountryExplorer.Application.Dtos.Auth;
+﻿namespace CountryExplorer.Application.Dtos.Auth;
 
 public class AuthResponseDto
 {

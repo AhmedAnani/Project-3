@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CountryExplorer.Application.Dtos.Auth;
+﻿namespace CountryExplorer.Application.Dtos.Auth;
 
 public class UserProfileDto
 {

@@ -117,7 +117,6 @@ public class UserRepository : IUserRepository
             throw;
         }
     }
-    // Add these methods to existing UserRepository class
 
     /// <summary>
     /// Get all users (excluding soft-deleted).
@@ -127,8 +126,8 @@ public class UserRepository : IUserRepository
         try
         {
             return await _context.Users
-                .OrderByDescending(u => u.CreatedAt)
-                .ToListAsync(ct);
+                 .OrderByDescending(u => u.CreatedAt)
+                 .ToListAsync(ct);
         }
         catch (Exception ex)
         {
@@ -145,7 +144,7 @@ public class UserRepository : IUserRepository
         try
         {
             return await _context.Users
-                .Where(u => u.Role == role)
+                .Where( u=> u.Role == role)
                 .OrderByDescending(u => u.CreatedAt)
                 .ToListAsync(ct);
         }
@@ -156,37 +155,10 @@ public class UserRepository : IUserRepository
         }
     }
 
-    /// <summary>
-    /// Count total users (excluding soft-deleted).
-    /// </summary>
-    public async Task<int> CountUsersAsync(CancellationToken ct = default)
+    public async Task<User?> GetByEmailIncludingDeletedAsync(string email,CancellationToken ct = default)
     {
-        try
-        {
-            return await _context.Users.CountAsync(ct);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error counting users");
-            throw;
-        }
-    }
-
-    /// <summary>
-    /// Count users by role (excluding soft-deleted).
-    /// </summary>
-    public async Task<int> CountUsersByRoleAsync(UserRole role, CancellationToken ct = default)
-    {
-        try
-        {
-            return await _context.Users
-                .Where(u => u.Role == role)
-                .CountAsync(ct);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error counting users by role {Role}", role);
-            throw;
-        }
+        return await _context.Users
+            .IgnoreQueryFilters()
+            .FirstOrDefaultAsync(u => u.Email == email, ct);
     }
 }

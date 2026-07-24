@@ -6,25 +6,14 @@ public static class AuthorizationExtensions
     {
         builder.Services.AddAuthorization(options =>
         {
-            options.AddPolicy("AuthenticatedUser", policy =>
-              policy.RequireAuthenticatedUser());
-
-            options.AddPolicy("AdminOnly", policy =>
+            options.AddPolicy("Admin", policy =>
                 policy.RequireAuthenticatedUser()
                       .RequireRole("Admin"));
-
-            options.AddPolicy("UserOrAdmin", policy =>
-                policy.RequireAuthenticatedUser()
-                      .RequireRole("User", "Admin"));
 
             options.AddPolicy("User", policy =>
                 policy.RequireAuthenticatedUser()
                       .RequireRole("User"));
 
-            options.AddPolicy("AdminWithValidation", policy =>
-                policy.RequireAuthenticatedUser()
-                      .RequireRole("Admin")
-                      .RequireClaim("email"));
         });
     }
 }

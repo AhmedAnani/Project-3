@@ -10,7 +10,8 @@ namespace CountryExplorer.Application.Services.Interfaces;
 
 public interface IAuthService
 {
-    Task<AuthResponseDto> GenerateTokensForUserAsync(User user); // used after OAuth complete
+    Task<AuthResponseDto> GenerateTokensForUserAsync(User user); 
     Task<AuthResponseDto> RefreshAccessTokenAsync(string refreshToken);
     Task LogoutAsync(string refreshToken);
+    Task<User> HandleGoogleLoginAsync(string email, string name,string googleId,string? pictureUrl,CancellationToken ct = default);
 }

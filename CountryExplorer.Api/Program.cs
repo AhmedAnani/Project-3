@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project_3.Extensions;
 using Project_3.Middleware;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,15 +35,12 @@ builder.Services.AddLogging();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 })
 .AddCookie(options =>
 {
     options.Cookie.Name = "CountryExplorer.OAuth";
-    options.Cookie.SameSite = SameSiteMode.None;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 })
 .AddGoogle(options =>
 {
@@ -50,10 +48,8 @@ builder.Services.AddAuthentication(options =>
     options.ClientSecret = googleSettings["ClientSecret"] ?? "";
     options.CallbackPath = "/signin-google";
     options.SaveTokens = true;
-
-    options.CorrelationCookie.SameSite = SameSiteMode.None;
+    options.CorrelationCookie.SameSite = SameSiteMode.Lax;
     options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.Always;
-
     options.Scope.Add("email");
     options.Scope.Add("profile");
     options.ClaimActions.MapJsonKey("picture", "picture");
@@ -71,7 +67,8 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(jwtSettings["Key"] ?? throw new InvalidOperationException("Missing JWT key"))
         ),
-        ClockSkew = TimeSpan.FromSeconds(10)
+        RoleClaimType = ClaimTypes.Role,
+        ClockSkew = TimeSpan.Zero
     };
 });
 
@@ -87,6 +84,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IGoogleAuthService, GoogleAuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 // ============ AUTHORIZATION & API ============
 builder.ConfigureAuthorizationPolicies();

@@ -59,6 +59,12 @@ public class ExceptionHandlingMiddleware
                 $"Missing required parameter: {argEx.ParamName}",
                 (string?)null
             ),
+            OperationCanceledException => (
+                StatusCodes.Status499ClientClosedRequest,
+                "REQUEST_CANCELLED",
+                "The request was cancelled.",
+                null
+            ),
             _ => (
                 StatusCodes.Status500InternalServerError,
                 "INTERNAL_ERROR",

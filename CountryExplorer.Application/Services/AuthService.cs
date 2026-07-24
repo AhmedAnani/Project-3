@@ -144,4 +144,98 @@ public class AuthService : IAuthService
             _logger.LogError(ex, "Error during logout");
         }
     }
+    /// <summary>
+    /// Handles Google login. Creates a new user or restores a soft-deleted user.
+    /// </summary>
+    public async Task<User> HandleGoogleLoginAsync(
+        string email,
+        string name,
+        string googleId,
+        string? pictureUrl,
+        CancellationToken ct = default)
+    {
+        try
+        {
+            var user = await _userRepo
+                .GetByEmailIncludingDeletedAsync(email, ct);
+
+
+            if (user == null)
+            {
+                user = new User
+                {
+                    Id = Guid.NewGuid(),
+                    Email = email,
+                    FullName = name,
+                    GoogleId = googleId,
+                    PictureUrl = pictureUrl,
+                    Role = UserRole.User,
+                    IsDeleted = false
+                };
+
+
+                await _userRepo.AddAsync(user, ct);
+                await _userRepo.SaveChangesAsync(ct);
+
+
+                _logger.LogInformation(
+                    "New Google user created {UserId}",
+                    user.Id);
+
+
+                return user;
+            }
+
+
+            var updated = false;
+
+
+            if (user.IsDeleted)
+            {
+                user.IsDeleted = false;
+                updated = true;
+
+
+                _logger.LogInformation(
+                    "Restored deleted user {UserId}",
+                    user.Id);
+            }
+
+
+            if (string.IsNullOrWhiteSpace(user.GoogleId))
+            {
+                user.GoogleId = googleId;
+                updated = true;
+            }
+
+
+            if (!string.IsNullOrWhiteSpace(pictureUrl) &&
+                user.PictureUrl != pictureUrl)
+            {
+                user.PictureUrl = pictureUrl;
+                updated = true;
+            }
+
+
+            if (updated)
+            {
+                await _userRepo.UpdateAsync(user, ct);
+                await _userRepo.SaveChangesAsync(ct);
+            }
+
+
+            return user;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "Error handling Google login for {Email}",
+                email);
+
+            throw new UserCreationException(
+                "Failed to process Google login.",
+                ex);
+        }
+    }
 }

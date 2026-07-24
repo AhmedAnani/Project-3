@@ -1,11 +1,6 @@
 ﻿using CountryExplorer.Application.Services.Interfaces;
 using Google.Apis.Auth;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CountryExplorer.Infrastructure.Services;
 
