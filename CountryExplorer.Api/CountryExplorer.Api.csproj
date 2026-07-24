@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -10,6 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.18" />
+    <PackageReference Include="OpenXmlPowerTools" Version="4.5.3.2" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+      <PackageReference Include="WebMotions.Fake.Authentication.JwtBearer" Version="9.0.0" />
+    
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  
   </ItemGroup>
 
   <ItemGroup>

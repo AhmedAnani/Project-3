@@ -1,6 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.75.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CountryExplorer.Domain\CountryExplorer.Domain.csproj" />
   </ItemGroup>
 
