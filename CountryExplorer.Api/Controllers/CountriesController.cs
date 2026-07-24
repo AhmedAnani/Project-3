@@ -11,15 +11,19 @@ public class CountriesController : ControllerBase
     private readonly ICountryExplorerService _countryExplorerService;
     private readonly ITouristAttractionService _touristAttractionService;
     private readonly IExchangeRateService _exchangeRateService;
+    private readonly ICountryApiService _countryApiService;
 
     public CountriesController(
         ICountryExplorerService countryExplorerService,
         ITouristAttractionService touristAttractionService,
-        IExchangeRateService exchangeRateService)
+        IExchangeRateService exchangeRateService,
+        ICountryApiService countryApiService
+)
     {
         _countryExplorerService = countryExplorerService;
         _touristAttractionService = touristAttractionService;
         _exchangeRateService = exchangeRateService;
+        _countryApiService = countryApiService;
     }
 
     /// <summary>
@@ -89,15 +93,13 @@ public class CountriesController : ControllerBase
             return BadRequest("Country name, fromCurrency, and a positive amount are required.");
         }
 
-        var country = await _countryExplorerService.GetCountryDetailsAsync(name);
-
+            var country = await _countryApiService.SearchByNameAsync(name);
         if (country is null)
         {
             return NotFound($"Country '{name}' was not found.");
         }
 
-        var destinationCurrency = country.Country.Currencies.FirstOrDefault();
-
+            var destinationCurrency = country.Currencies.FirstOrDefault();
         if (destinationCurrency is null)
         {
             return BadRequest($"No currency data available for '{name}'.");
