@@ -1,9 +1,14 @@
+using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.Interfaces.External;
+using CountryExplorer.Application.Services;
+using CountryExplorer.Infrastructure.ExternalServices;
 using CountryExplorer.Api.Middleware;
 using CountryExplorer.Application.Mappings;
 using CountryExplorer.Application.Services;
 using CountryExplorer.Application.Services.Interfaces;
 using CountryExplorer.Domain.Repositories;
 using CountryExplorer.Infrastructure.Data;
+using CountryExplorer.Infrastructure.Data.Seeding;
 using CountryExplorer.Infrastructure.Repositories;
 using CountryExplorer.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -12,6 +17,10 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
+using CountryExplorer.Application;
+using CountryExplorer.Infrastructure;
+using CountryExplorer.Api.Middlewares;
+
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -31,6 +40,21 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(AuthProfile));
 builder.Services.AddLogging();
 
+// AutoMapper — scan both Application (Trip profiles) and Infrastructure (Country profiles) assemblies
+builder.Services.AddAutoMapper(
+    typeof(CountryExplorer.Application.Mappings.TripMappingProfile).Assembly,
+    typeof(CountryExplorer.Infrastructure.Mappings.MappingProfile).Assembly
+);
+
+builder.Services.AddMemoryCache();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
+// Application & Infrastructure DI (Trip service, repository, Google Calendar)
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
+
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 // ============ AUTHENTICATION ============
 builder.Services.AddAuthentication(options =>
 {
@@ -79,6 +103,27 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         sqlOptions => sqlOptions.EnableRetryOnFailure()
     ));
 
+// Esraa's external API clients
+builder.Services.AddHttpClient<ICountryApiService, CountryApiService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.restcountries.com/countries/v5/");
+    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {builder.Configuration["RestCountries:ApiKey"]}");
+
+});
+
+builder.Services.AddHttpClient<ITouristAttractionService, TouristAttractionService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.opentripmap.com/0.1/en/places/");
+});
+
+builder.Services.AddHttpClient<IExchangeRateService, ExchangeRateService>(client =>
+{
+    client.BaseAddress = new Uri("https://v6.exchangerate-api.com/v6/");
+});
+
+builder.Services.AddScoped<ICountryExplorerService, CountryExplorerService>();
+
+var app = builder.Build();
 // ============ REPOSITORIES & SERVICES ============
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
@@ -98,6 +143,10 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Authentication and user management API"
     });
 
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.Http,
@@ -106,6 +155,19 @@ builder.Services.AddSwaggerGen(c =>
         Description = "JWT Authorization header using the Bearer scheme"
     });
 
+    try
+    {
+        var dbContext = services.GetRequiredService<AppDbContext>();
+        await dbContext.Database.MigrateAsync();
+
+        await DbSeed.SeedAsync(dbContext);
+    }
+    catch (Exception ex)
+    {
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+    }
+}
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -143,6 +205,7 @@ var app = builder.Build();
 
 // ============ MIDDLEWARE PIPELINE ============
 
+app.UseExceptionHandler();
 app.UseGlobalExceptionHandler();
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
