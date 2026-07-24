@@ -1,11 +1,12 @@
-using CountryExplorer.Application.Interfaces;
+using CountryExplorer.Application.Interfaces.Repositories;
+using CountryExplorer.Application.Interfaces.External;
+using CountryExplorer.Infrastructure.ExternalServices;
 using CountryExplorer.Infrastructure.Repositories;
-using CountryExplorer.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CountryExplorer.Infrastructure;
 
-public static class DependencyInjection
+public static class ServiceRegistration
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {

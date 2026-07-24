@@ -1,5 +1,6 @@
 using CountryExplorer.Application.DTOs.Countries;
 using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.Interfaces.External;
 
 namespace CountryExplorer.Application.Services;
 
@@ -21,6 +22,11 @@ public class CountryExplorerService : ICountryExplorerService
         var country = await _countryApiService.SearchByNameAsync(name);
 
         var attractions = new List<Application.DTOs.Attractions.TouristAttractionDto>();
+
+        if (country == null)
+        {
+            return null;
+        }
 
         if (country.CapitalLatitude.HasValue && country.CapitalLongitude.HasValue)
         {

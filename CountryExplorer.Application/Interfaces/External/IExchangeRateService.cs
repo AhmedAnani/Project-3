@@ -1,6 +1,6 @@
 using CountryExplorer.Application.DTOs.Budget;
 
-namespace CountryExplorer.Application.Interfaces.Services;
+namespace CountryExplorer.Application.Interfaces.External;
 
 public interface IExchangeRateService
 {

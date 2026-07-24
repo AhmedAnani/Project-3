@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using CountryExplorer.Application.DTOs;
-using CountryExplorer.Application.Interfaces;
+using CountryExplorer.Application.Interfaces.Services;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,10 @@ namespace CountryExplorer.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
-public class TripsController(ITripService tripService) : ControllerBase
+public class TripsController(
+    ITripService tripService,
+    IValidator<TripItemCreateDto> createValidator,
+    IValidator<TripItemUpdateDto> updateValidator) : ControllerBase
 {
     /// <summary>
     /// Extracts the user ID from the authenticated user's claims.
@@ -45,12 +49,17 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// </summary>
     /// <param name="pageNumber">The page number to retrieve (default: 1).</param>
     /// <param name="pageSize">The number of records to return per page (default: 20).</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A paginated list of trips.</returns>
     [HttpGet]
-    public async Task<ActionResult<PagedResult<TripItemResponseDto>>> GetTrips([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 20)
+    [ProducesResponseType(typeof(PagedResult<TripItemResponseDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<PagedResult<TripItemResponseDto>>> GetTrips(
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 20,
+        CancellationToken cancellationToken = default)
     {
         var userId = GetUserId();
-        var trips = await tripService.GetAllTripsAsync(userId, pageNumber, pageSize);
+        var trips = await tripService.GetAllTripsAsync(userId, pageNumber, pageSize, cancellationToken);
         return Ok(trips);
     }
 
@@ -58,16 +67,24 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// Retrieves a specific trip by ID.
     /// </summary>
     /// <param name="id">The ID of the trip to retrieve.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The trip details or 404 if not found.</returns>
     [HttpGet("{id}")]
-    public async Task<ActionResult<TripItemResponseDto>> GetTrip(int id)
+    [ProducesResponseType(typeof(TripItemResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<TripItemResponseDto>> GetTrip(int id, CancellationToken cancellationToken = default)
     {
         var userId = GetUserId();
-        var trip = await tripService.GetTripAsync(userId, id);
+        var trip = await tripService.GetTripAsync(userId, id, cancellationToken);
 
         if (trip == null)
         {
-            return NotFound(new { message = $"Trip with ID {id} not found." });
+            return NotFound(new ProblemDetails
+            {
+                Status = StatusCodes.Status404NotFound,
+                Title = "Not Found",
+                Detail = $"Trip with ID {id} not found."
+            });
         }
 
         return Ok(trip);
@@ -77,14 +94,19 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// Creates a new trip for the authenticated user.
     /// </summary>
     /// <param name="dto">The trip creation data.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The created trip with a Location header (201 Created).</returns>
     [HttpPost]
-    public async Task<ActionResult<TripItemResponseDto>> CreateTrip([FromBody] TripItemCreateDto dto)
+    [ProducesResponseType(typeof(TripItemResponseDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<TripItemResponseDto>> CreateTrip([FromBody] TripItemCreateDto dto, CancellationToken cancellationToken = default)
     {
+        await createValidator.ValidateAndThrowAsync(dto, cancellationToken);
+
         var userId = GetUserId();
         var googleToken = GetGoogleToken();
 
-        var createdTrip = await tripService.CreateTripAsync(userId, dto, googleToken);
+        var createdTrip = await tripService.CreateTripAsync(userId, dto, googleToken, cancellationToken);
 
         return CreatedAtAction(nameof(GetTrip), new { id = createdTrip.Id }, createdTrip);
     }
@@ -94,14 +116,20 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// </summary>
     /// <param name="id">The ID of the trip to update.</param>
     /// <param name="dto">The updated trip data.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>204 No Content on success.</returns>
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTrip(int id, [FromBody] TripItemUpdateDto dto)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> UpdateTrip(int id, [FromBody] TripItemUpdateDto dto, CancellationToken cancellationToken = default)
     {
+        await updateValidator.ValidateAndThrowAsync(dto, cancellationToken);
+
         var userId = GetUserId();
         var googleToken = GetGoogleToken();
 
-        await tripService.UpdateTripAsync(userId, id, dto, googleToken);
+        await tripService.UpdateTripAsync(userId, id, dto, googleToken, cancellationToken);
 
         return NoContent();
     }
@@ -110,14 +138,27 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// Deletes a specific trip.
     /// </summary>
     /// <param name="id">The ID of the trip to delete.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>204 No Content on success.</returns>
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTrip(int id)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> DeleteTrip(int id, CancellationToken cancellationToken = default)
     {
         var userId = GetUserId();
         var googleToken = GetGoogleToken();
 
-        await tripService.DeleteTripAsync(userId, id, googleToken);
+        var result = await tripService.DeleteTripAsync(userId, id, googleToken, cancellationToken);
+
+        if (!result)
+        {
+            return NotFound(new ProblemDetails
+            {
+                Status = StatusCodes.Status404NotFound,
+                Title = "Not Found",
+                Detail = $"Trip with ID {id} not found."
+            });
+        }
 
         return NoContent();
     }

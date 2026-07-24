@@ -3,7 +3,7 @@ using CountryExplorer.Application.DTOs;
 using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
 
-namespace CountryExplorer.Application.Profiles;
+namespace CountryExplorer.Application.Mappings;
 
 public class TripMappingProfile : Profile
 {

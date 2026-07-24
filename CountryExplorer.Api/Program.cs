@@ -1,8 +1,9 @@
 using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.Interfaces.External;
 using CountryExplorer.Application.Services;
 using CountryExplorer.Infrastructure.ExternalServices;
 using CountryExplorer.Infrastructure.Data;
-using CountryExplorer.Infrastructure.Seeding;
+using CountryExplorer.Infrastructure.Data.Seeding;
 using Microsoft.EntityFrameworkCore;
 using CountryExplorer.Application;
 using CountryExplorer.Infrastructure;
@@ -18,8 +19,8 @@ builder.Services.AddSwaggerGen();
 
 // AutoMapper — scan both Application (Trip profiles) and Infrastructure (Country profiles) assemblies
 builder.Services.AddAutoMapper(
-    typeof(CountryExplorer.Application.Profiles.TripMappingProfile).Assembly,
-    typeof(CountryExplorer.Infrastructure.Mapping.MappingProfile).Assembly
+    typeof(CountryExplorer.Application.Mappings.TripMappingProfile).Assembly,
+    typeof(CountryExplorer.Infrastructure.Mappings.MappingProfile).Assembly
 );
 
 builder.Services.AddMemoryCache();

@@ -3,7 +3,7 @@ using CountryExplorer.Application.DTOs.Attractions;
 using CountryExplorer.Application.DTOs.Countries;
 using CountryExplorer.Infrastructure.ExternalServices.Models;
 
-namespace CountryExplorer.Infrastructure.Mapping;
+namespace CountryExplorer.Infrastructure.Mappings;
 
 public class MappingProfile : Profile
 {

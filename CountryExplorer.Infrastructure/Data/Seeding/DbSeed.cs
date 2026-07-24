@@ -2,7 +2,7 @@ using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
 using CountryExplorer.Infrastructure.Data;
 
-namespace CountryExplorer.Infrastructure.Seeding;
+namespace CountryExplorer.Infrastructure.Data.Seeding;
 
 public static class DbSeed
 {
@@ -13,7 +13,7 @@ public static class DbSeed
 
         var adminUser = new User
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.Parse("88888888-8888-8888-8888-888888888888"),
             FullName = "Admin",
             Email = "admin@test.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin@123"),
@@ -23,7 +23,7 @@ public static class DbSeed
 
         var normalUser = new User
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
             FullName = "Esraa",
             Email = "esraa@test.com",
             PasswordHash = BCrypt.Net.BCrypt.HashPassword("Esraa@123"),
@@ -39,7 +39,7 @@ public static class DbSeed
             {
                 UserId = normalUser.Id,
                 Title = "Japan Spring Trip",
-                CountryCode = "JPN",
+                CountryCode = "JP",
                 CountryName = "Japan",
                 Status = TripStatus.Planned,
                 StartDate = DateTime.UtcNow.AddMonths(3),
@@ -51,7 +51,7 @@ public static class DbSeed
             {
                 UserId = normalUser.Id,
                 Title = "Egypt History Trip",
-                CountryCode = "EGY",
+                CountryCode = "EG",
                 CountryName = "Egypt",
                 Status = TripStatus.Visited,
                 StartDate = DateTime.UtcNow.AddMonths(-2).AddDays(-6),

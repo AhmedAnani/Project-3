@@ -1,6 +1,6 @@
 using CountryExplorer.Application.Exceptions;
 using CountryExplorer.Application.DTOs.Budget;
-using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.Interfaces.External;
 using CountryExplorer.Infrastructure.ExternalServices.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;

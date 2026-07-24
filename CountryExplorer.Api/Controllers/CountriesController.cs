@@ -1,4 +1,5 @@
 using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.Interfaces.External;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CountryExplorer.Api.Controllers;
