@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using CountryExplorer.Application.Dtos.Auth;
-using CountryExplorer.Application.Mappings;
-using CountryExplorer.Application.Services.Interfaces;
-using CountryExplorer.Domain.Entities;
+﻿using CountryExplorer.Application.Services.Interfaces;
 using CountryExplorer.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

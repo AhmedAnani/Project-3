@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Security.Claims;
 
-namespace CountryExplorer.Api.Middleware;
+namespace Project_3.Middlewares;
 
 /// <summary>
 /// Middleware that limits the number of requests per client to a maximum within a sliding time window.

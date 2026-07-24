@@ -1,6 +1,6 @@
-﻿using CountryExplorer.Api.Middleware;
+﻿using Project_3.Middleware;
 
-namespace Project_3.Middleware;
+namespace Project_3.Middlewares;
 
 public static class MiddlewareExtensions
 {

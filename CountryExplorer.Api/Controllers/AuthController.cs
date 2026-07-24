@@ -1,11 +1,5 @@
-﻿using AutoMapper;
-using CountryExplorer.Application.Dtos.Auth;
-using CountryExplorer.Application.Mappings;
+﻿using CountryExplorer.Application.Dtos.Auth;
 using CountryExplorer.Application.Services.Interfaces;
-using CountryExplorer.Domain.Entities;
-using CountryExplorer.Domain.Enums;
-using CountryExplorer.Domain.Exceptions;
-using CountryExplorer.Domain.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;

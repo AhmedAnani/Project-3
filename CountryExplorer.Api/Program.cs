@@ -2,32 +2,26 @@ using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Application.Interfaces.External;
 using CountryExplorer.Application.Services;
 using CountryExplorer.Infrastructure.ExternalServices;
-using CountryExplorer.Api.Middleware;
-using CountryExplorer.Application.Mappings;
-using CountryExplorer.Application.Services;
+using CountryExplorer.Api.Middlewares;
 using CountryExplorer.Application.Services.Interfaces;
 using CountryExplorer.Domain.Repositories;
 using CountryExplorer.Infrastructure.Data;
-using CountryExplorer.Infrastructure.Data.Seeding;
+
 using CountryExplorer.Infrastructure.Repositories;
 using CountryExplorer.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using CountryExplorer.Application;
 using CountryExplorer.Infrastructure;
-using CountryExplorer.Api.Middlewares;
 
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project_3.Extensions;
-using Project_3.Middleware;
 using System.Security.Claims;
 using System.Text;
+using Project_3.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +31,6 @@ var appBaseUrl = builder.Configuration["AppBaseUrl"] ?? "https://localhost:7293"
 
 // ============ SERVICES ============
 builder.Services.AddControllers();
-builder.Services.AddAutoMapper(typeof(AuthProfile));
 builder.Services.AddLogging();
 
 // AutoMapper — scan both Application (Trip profiles) and Infrastructure (Country profiles) assemblies
@@ -123,7 +116,7 @@ builder.Services.AddHttpClient<IExchangeRateService, ExchangeRateService>(client
 
 builder.Services.AddScoped<ICountryExplorerService, CountryExplorerService>();
 
-var app = builder.Build();
+
 // ============ REPOSITORIES & SERVICES ============
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
@@ -131,9 +124,10 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IGoogleAuthService, GoogleAuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-
 // ============ AUTHORIZATION & API ============
 builder.ConfigureAuthorizationPolicies();
+
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -143,10 +137,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Authentication and user management API"
     });
 
-using (IServiceScope scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.Http,
@@ -155,19 +145,6 @@ using (IServiceScope scope = app.Services.CreateScope())
         Description = "JWT Authorization header using the Bearer scheme"
     });
 
-    try
-    {
-        var dbContext = services.GetRequiredService<AppDbContext>();
-        await dbContext.Database.MigrateAsync();
-
-        await DbSeed.SeedAsync(dbContext);
-    }
-    catch (Exception ex)
-    {
-        var logger = loggerFactory.CreateLogger<Program>();
-        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
-    }
-}
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -185,12 +162,13 @@ using (IServiceScope scope = app.Services.CreateScope())
 });
 
 // ============ CORS ============
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
         var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()
-            ?? new[] { "http://localhost:5048","https://localhost:7293" };
+            ?? new[] { "http://localhost:5048", "https://localhost:7293" };
 
         policy
             .WithOrigins(allowedOrigins)
@@ -202,6 +180,7 @@ builder.Services.AddCors(options =>
 
 // ============ BUILD APP ============
 var app = builder.Build();
+
 
 // ============ MIDDLEWARE PIPELINE ============
 

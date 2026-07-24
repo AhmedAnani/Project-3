@@ -1,5 +1,4 @@
 ﻿using CountryExplorer.Domain.Exceptions;
-using System.Net;
 using System.Text.Json;
 
 namespace Project_3.Middleware;
