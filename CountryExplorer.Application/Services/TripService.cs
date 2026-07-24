@@ -32,13 +32,20 @@ public class TripService : ITripService
         return trip is null ? null : _mapper.Map<TripItemResponseDto>(trip);
     }
 
-    public async Task<IEnumerable<TripItemResponseDto>> GetAllTripsAsync(Guid userId, int skip, int take)
+    public async Task<PagedResult<TripItemResponseDto>> GetAllTripsAsync(Guid userId, int pageNumber, int pageSize)
     {
-        skip = Math.Max(skip, 0);
-        take = Math.Clamp(take, 1, 50);
+        pageNumber = Math.Max(pageNumber, 1);
+        pageSize = Math.Clamp(pageSize, 1, 50);
 
-        var trips = await _tripRepository.GetAllForUserAsync(userId, skip, take);
-        return trips.Select(_mapper.Map<TripItemResponseDto>).ToList();
+        var pagedTrips = await _tripRepository.GetAllForUserAsync(userId, pageNumber, pageSize);
+
+        return new PagedResult<TripItemResponseDto>
+        {
+            Items = pagedTrips.Items.Select(_mapper.Map<TripItemResponseDto>).ToList(),
+            TotalCount = pagedTrips.TotalCount,
+            PageNumber = pagedTrips.PageNumber,
+            PageSize = pagedTrips.PageSize
+        };
     }
 
     public async Task<TripItemResponseDto> CreateTripAsync(Guid userId, TripItemCreateDto dto, string? googleAccessToken = null)

@@ -1,3 +1,4 @@
+using CountryExplorer.Application.DTOs;
 using CountryExplorer.Domain.Entities;
 
 namespace CountryExplorer.Application.Interfaces;
@@ -16,7 +17,7 @@ public interface ITripRepository
     /// <summary>
     /// Retrieves all trips for a specific user with pagination support.
     /// </summary>
-    Task<IEnumerable<TripBucketItem>> GetAllForUserAsync(Guid userId, int skip, int take);
+    Task<PagedResult<TripBucketItem>> GetAllForUserAsync(Guid userId, int pageNumber, int pageSize);
 
     /// <summary>
     /// Adds a new trip to the database.

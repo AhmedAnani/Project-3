@@ -17,7 +17,7 @@ public interface ITripService
     /// <summary>
     /// Retrieves all trips for a user with pagination support.
     /// </summary>
-    Task<IEnumerable<TripItemResponseDto>> GetAllTripsAsync(Guid userId, int skip, int take);
+    Task<PagedResult<TripItemResponseDto>> GetAllTripsAsync(Guid userId, int pageNumber, int pageSize);
 
     /// <summary>
     /// Creates a new trip and optionally syncs with Google Calendar.

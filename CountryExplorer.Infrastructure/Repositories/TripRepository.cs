@@ -1,3 +1,4 @@
+using CountryExplorer.Application.DTOs;
 using CountryExplorer.Application.Interfaces;
 using CountryExplorer.Domain.Entities;
 using CountryExplorer.Infrastructure.Data;
@@ -21,15 +22,30 @@ public class TripRepository : ITripRepository
             .FirstOrDefaultAsync(item => item.Id == tripId && item.UserId == userId);
     }
 
-    public async Task<IEnumerable<TripBucketItem>> GetAllForUserAsync(Guid userId, int skip, int take)
+    public async Task<PagedResult<TripBucketItem>> GetAllForUserAsync(Guid userId, int pageNumber, int pageSize)
     {
-        return await _context.TripBucketItems
+        pageNumber = Math.Max(pageNumber, 1);
+        pageSize = Math.Clamp(pageSize, 1, 50);
+
+        var query = _context.TripBucketItems
             .AsNoTracking()
             .Where(item => item.UserId == userId)
-            .OrderByDescending(item => item.CreatedAt)
-            .Skip(skip)
-            .Take(take)
+            .OrderByDescending(item => item.CreatedAt);
+
+        var totalCount = await query.CountAsync();
+
+        var items = await query
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
+
+        return new PagedResult<TripBucketItem>
+        {
+            Items = items,
+            TotalCount = totalCount,
+            PageNumber = pageNumber,
+            PageSize = pageSize
+        };
     }
 
     public async Task<TripBucketItem> AddAsync(TripBucketItem trip)

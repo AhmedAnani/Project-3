@@ -43,14 +43,14 @@ public class TripsController(ITripService tripService) : ControllerBase
     /// <summary>
     /// Retrieves all trips for the authenticated user with pagination support.
     /// </summary>
-    /// <param name="skip">Number of records to skip (default: 0).</param>
-    /// <param name="take">Number of records to take (default: 20).</param>
+    /// <param name="pageNumber">The page number to retrieve (default: 1).</param>
+    /// <param name="pageSize">The number of records to return per page (default: 20).</param>
     /// <returns>A paginated list of trips.</returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<TripItemResponseDto>>> GetTrips([FromQuery] int skip = 0, [FromQuery] int take = 20)
+    public async Task<ActionResult<PagedResult<TripItemResponseDto>>> GetTrips([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 20)
     {
         var userId = GetUserId();
-        var trips = await tripService.GetAllTripsAsync(userId, skip, take);
+        var trips = await tripService.GetAllTripsAsync(userId, pageNumber, pageSize);
         return Ok(trips);
     }
 
