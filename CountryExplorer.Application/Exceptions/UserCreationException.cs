@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CountryExplorer.Domain.Exceptions;
+namespace CountryExplorer.Application.Exceptions;
 
 /// <summary>
 /// Thrown when user creation fails.
 /// </summary>
-public class UserCreationException : Exception
+public class UserCreationException : AppException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="UserCreationException"/> class.

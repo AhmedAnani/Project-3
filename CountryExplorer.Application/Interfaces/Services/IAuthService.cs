@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CountryExplorer.Application.Services.Interfaces;
+namespace CountryExplorer.Application.Interfaces.Services;
 
 public interface IAuthService
 {

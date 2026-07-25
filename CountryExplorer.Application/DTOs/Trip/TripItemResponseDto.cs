@@ -1,6 +1,6 @@
 using CountryExplorer.Domain.Enums;
 
-namespace CountryExplorer.Application.DTOs;
+namespace CountryExplorer.Application.DTOs.Trip;
 
 public class TripItemResponseDto
 {

@@ -1,6 +1,6 @@
 ﻿using CountryExplorer.Domain.Entities;
 
-namespace CountryExplorer.Application.Services.Interfaces;
+namespace CountryExplorer.Application.Interfaces.Services;
 
 public interface IJwtService
 {

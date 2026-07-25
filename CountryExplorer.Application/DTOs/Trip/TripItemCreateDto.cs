@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CountryExplorer.Application.DTOs;
+namespace CountryExplorer.Application.DTOs.Trip;
 
 public class TripItemCreateDto
 {

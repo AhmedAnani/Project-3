@@ -1,3 +1,4 @@
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Application.DTOs;
 
 namespace CountryExplorer.Application.Interfaces.Services;

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CountryExplorer.Domain.Exceptions;
+namespace CountryExplorer.Application.Exceptions;
 
 /// <summary>
 /// Thrown when a token is invalid, expired, or revoked.
 /// </summary>
-public class InvalidTokenException : Exception
+public class InvalidTokenException : AppException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InvalidTokenException"/> class.

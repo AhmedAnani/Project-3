@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using CountryExplorer.Application.DTOs;
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Application.Interfaces.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;

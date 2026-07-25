@@ -1,4 +1,4 @@
-using CountryExplorer.Application.DTOs;
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Domain.Enums;
 using FluentValidation;
 

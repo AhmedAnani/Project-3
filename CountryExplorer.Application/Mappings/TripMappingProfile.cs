@@ -1,5 +1,5 @@
 using AutoMapper;
-using CountryExplorer.Application.DTOs;
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
 

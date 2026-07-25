@@ -1,5 +1,5 @@
 ﻿using CountryExplorer.Application.Dtos.Auth;
-using CountryExplorer.Application.Services.Interfaces;
+using CountryExplorer.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;

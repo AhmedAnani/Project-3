@@ -1,11 +1,11 @@
 ﻿
 
-namespace CountryExplorer.Domain.Exceptions;
+namespace CountryExplorer.Application.Exceptions;
 
 /// <summary>
 /// Thrown when a client exceeds the allowed request limit within a time window.
 /// </summary>
-public class RateLimitExceededException : Exception
+public class RateLimitExceededException : AppException
 {
     /// <summary>
     /// The time (in seconds) after which the client can retry.
