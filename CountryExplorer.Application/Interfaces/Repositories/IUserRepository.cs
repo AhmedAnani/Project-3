@@ -1,7 +1,7 @@
 ﻿using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
 
-namespace CountryExplorer.Domain.Repositories;
+namespace CountryExplorer.Application.Interfaces.Repositories;
 
 public interface IUserRepository
 {

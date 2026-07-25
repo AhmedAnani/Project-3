@@ -1,10 +1,10 @@
-﻿using CountryExplorer.Application.Services.Interfaces;
+﻿using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace Project_3.Controllers;
+namespace CountryExplorer.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

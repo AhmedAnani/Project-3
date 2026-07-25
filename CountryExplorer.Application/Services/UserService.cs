@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using CountryExplorer.Application.Dtos.Auth;
 using CountryExplorer.Application.Mappings;
-using CountryExplorer.Application.Services.Interfaces;
+using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Domain.Enums;
-using CountryExplorer.Domain.Repositories;
+using CountryExplorer.Application.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

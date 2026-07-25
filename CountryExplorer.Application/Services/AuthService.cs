@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using CountryExplorer.Application.Dtos.Auth;
 using CountryExplorer.Application.Mappings;
-using CountryExplorer.Application.Services.Interfaces;
+using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
-using CountryExplorer.Domain.Exceptions;
-using CountryExplorer.Domain.Repositories;
+using CountryExplorer.Application.Exceptions;
+using CountryExplorer.Application.Interfaces.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace CountryExplorer.Application.Services;

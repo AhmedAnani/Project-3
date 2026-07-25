@@ -1,5 +1,6 @@
 using AutoMapper;
 using CountryExplorer.Application.DTOs;
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Application.Interfaces.Repositories;
 using CountryExplorer.Application.Interfaces.External;

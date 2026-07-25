@@ -1,6 +1,6 @@
 ﻿using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
-using CountryExplorer.Domain.Repositories;
+using CountryExplorer.Application.Interfaces.Repositories;
 using CountryExplorer.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
