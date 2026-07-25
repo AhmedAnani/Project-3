@@ -6,7 +6,11 @@ using CountryExplorer.Api.Middlewares;
 using CountryExplorer.Application.Services.Interfaces;
 using CountryExplorer.Domain.Repositories;
 using CountryExplorer.Infrastructure.Data;
+using CountryExplorer.Infrastructure.Data.Seeding;
 
+using CountryExplorer.Application.Interfaces.Repositories;
+using CountryExplorer.Application.Services.Discovery;
+using CountryExplorer.Infrastructure.Persistence.Repositories;
 using CountryExplorer.Infrastructure.Repositories;
 using CountryExplorer.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -31,7 +35,11 @@ var googleSettings = builder.Configuration.GetSection("Google");
 var appBaseUrl = builder.Configuration["AppBaseUrl"] ?? "https://localhost:7293";
 
 // ============ SERVICES ============
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 builder.Services.AddLogging();
 
 // AutoMapper — scan both Application (Trip profiles) and Infrastructure (Country profiles) assemblies
@@ -124,6 +132,10 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IGoogleAuthService, GoogleAuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+// Discovery (Phase 3)
+builder.Services.AddScoped<IDestinationRepository, DestinationRepository>();
+builder.Services.AddScoped<IDiscoveryService, DiscoveryService>();
 
 // ============ AUTHORIZATION & API ============
 builder.ConfigureAuthorizationPolicies();
@@ -220,6 +232,17 @@ if (app.Environment.IsDevelopment())
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
             logger.LogError(ex, "Database migration failed");
         }
+    }
+
+    // Seed test destinations after migration
+    try
+    {
+        DbInitializer.InitializeDestinations(app.Services);
+    }
+    catch (Exception ex)
+    {
+        var logger = app.Services.GetRequiredService<ILogger<Program>>();
+        logger.LogWarning(ex, "Destination seeding skipped — could not connect to database.");
     }
 }
 

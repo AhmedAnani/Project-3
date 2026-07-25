@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
     public DbSet<User> Users => Set<User>();
     public DbSet<TripBucketItem> TripBucketItems => Set<TripBucketItem>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+    public DbSet<Destination> Destinations => Set<Destination>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -53,6 +54,30 @@ public class AppDbContext : DbContext
 
             entity.HasQueryFilter(r => !r.User.IsDeleted);
 
+        });
+
+        modelBuilder.Entity<Destination>(entity =>
+        {
+            entity.HasKey(d => d.Id);
+
+            entity.Property(d => d.CountryCode)
+                  .IsRequired()
+                  .HasMaxLength(2);
+
+            entity.Property(d => d.CityName)
+                  .IsRequired()
+                  .HasMaxLength(100);
+
+            entity.Property(d => d.Description)
+                  .HasMaxLength(200);
+
+            // Store VibeTag flags as int for bitwise queries
+            entity.Property(d => d.Tags)
+                  .HasConversion<int>();
+
+            // Prevent duplicate city+country combinations
+            entity.HasIndex(d => new { d.CountryCode, d.CityName })
+                  .IsUnique();
         });
     }
 }
