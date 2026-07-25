@@ -1,4 +1,5 @@
 using CountryExplorer.Application.DTOs;
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Application.DTOs.Discovery;
 using CountryExplorer.Application.Dtos.Discovery;
 using CountryExplorer.Application.Interfaces.Repositories;

@@ -1,4 +1,4 @@
-﻿using CountryExplorer.Application.Services.Interfaces;
+﻿using CountryExplorer.Application.Interfaces.Services;
 using Google.Apis.Auth;
 using Microsoft.Extensions.Configuration;
 

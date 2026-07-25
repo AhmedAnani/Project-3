@@ -1,5 +1,6 @@
 using CountryExplorer.Application.Dtos.Discovery;
 using CountryExplorer.Application.DTOs.Discovery;
+using CountryExplorer.Application.DTOs.Trip;
 using CountryExplorer.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

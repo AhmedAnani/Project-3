@@ -1,5 +1,6 @@
-﻿using CountryExplorer.Application.Dtos.Auth;
-using CountryExplorer.Application.Services.Interfaces;
+using CountryExplorer.Application.Dtos.Auth;
+using CountryExplorer.Application.Interfaces.Services;
+using CountryExplorer.Application.DTOs.Auth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -78,8 +79,7 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> OAuthComplete()
     {
         var result = await HttpContext.AuthenticateAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme);
-
+         CookieAuthenticationDefaults.AuthenticationScheme);
 
         if (!result.Succeeded || result.Principal == null)
         {
@@ -89,37 +89,22 @@ public class AuthController : ControllerBase
             });
         }
 
+        var email = result.Principal.FindFirst(ClaimTypes.Email)?.Value;
+        var name = result.Principal.FindFirst(ClaimTypes.Name)?.Value;
+        var googleId = result.Principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var pictureUrl = result.Principal.FindFirst("picture")?.Value;
 
-        var email = result.Principal
-            .FindFirst(ClaimTypes.Email)?.Value;
+        var googleAccessToken = result.Properties?.GetTokenValue("access_token");
 
-        var name = result.Principal
-            .FindFirst(ClaimTypes.Name)?.Value;
-
-        var googleId = result.Principal
-            .FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-        var pictureUrl = result.Principal
-            .FindFirst("picture")?.Value;
-
-
-
-        if (string.IsNullOrWhiteSpace(email) ||
-            string.IsNullOrWhiteSpace(googleId))
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(googleId))
         {
-            return Unauthorized(new
-            {
-                message = "Missing Google claims"
-            });
+            return Unauthorized(new { message = "Missing Google claims" });
         }
-
 
         if (!IsValidImageUrl(pictureUrl))
         {
             pictureUrl = null;
         }
-
-
 
         var user = await _authService.HandleGoogleLoginAsync(
             email,
@@ -127,25 +112,20 @@ public class AuthController : ControllerBase
             googleId,
             pictureUrl);
 
+        var tokens = await _authService.GenerateTokensForUserAsync(user);
 
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        var tokens = await _authService
-            .GenerateTokensForUserAsync(user);
+        _logger.LogInformation("User logged in successfully {UserId}", user.Id);
 
-
-
-        await HttpContext.SignOutAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme);
-
-
-
-        _logger.LogInformation(
-            "User logged in successfully {UserId}",
-            user.Id);
-
-
-
-        return Ok(tokens);
+        return Ok(new AuthResponseWithGoogleTokenDto
+        {
+            AccessToken = tokens.AccessToken,
+            RefreshToken = tokens.RefreshToken,
+            AccessTokenExpiresAt = tokens.AccessTokenExpiresAt,
+            GoogleAccessToken = googleAccessToken,  
+            User = tokens.User
+        });
     }
 
 

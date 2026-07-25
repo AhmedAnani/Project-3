@@ -1,11 +1,9 @@
-﻿using Project_3.Middleware;
+﻿using CountryExplorer.Api.Middlewares;
 
-namespace Project_3.Middlewares;
+namespace CountryExplorer.Api.Middlewares;
 
 public static class MiddlewareExtensions
 {
-    public static IApplicationBuilder UseGlobalExceptionHandler(this IApplicationBuilder app)
-        => app.UseMiddleware<ExceptionHandlingMiddleware>();
 
     public static IApplicationBuilder UseRateLimiting(this IApplicationBuilder app)
         => app.UseMiddleware<RateLimitingMiddleware>();

@@ -1,8 +1,8 @@
-﻿using CountryExplorer.Domain.Exceptions;
+﻿using CountryExplorer.Application.Exceptions;
 using System.Collections.Concurrent;
 using System.Security.Claims;
 
-namespace Project_3.Middlewares;
+namespace CountryExplorer.Api.Middlewares;
 
 /// <summary>
 /// Middleware that limits the number of requests per client to a maximum within a sliding time window.

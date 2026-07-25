@@ -1,4 +1,4 @@
-﻿using CountryExplorer.Application.Services.Interfaces;
+﻿using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Domain.Entities;
 using CountryExplorer.Domain.Enums;
 using Microsoft.Extensions.Configuration;

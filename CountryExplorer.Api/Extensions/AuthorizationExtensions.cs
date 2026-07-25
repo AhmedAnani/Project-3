@@ -1,4 +1,4 @@
-﻿namespace Project_3.Extensions;
+﻿namespace CountryExplorer.Api.Extensions;
 
 public static class AuthorizationExtensions
 {
