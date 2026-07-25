@@ -70,6 +70,8 @@ builder.Services.AddAuthentication(options =>
     options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.Always;
     options.Scope.Add("email");
     options.Scope.Add("profile");
+    options.Scope.Add("https://www.googleapis.com/auth/calendar");
+    options.AccessType = "offline";                 
     options.ClaimActions.MapJsonKey("picture", "picture");
 })
 .AddJwtBearer(options =>

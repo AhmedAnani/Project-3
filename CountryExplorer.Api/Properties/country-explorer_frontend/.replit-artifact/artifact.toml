@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Country Explorer"
+version = "1.0.0"
+id = "artifacts/country-explorer"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19843
+
+[services.development]
+run = "pnpm --filter @workspace/country-explorer run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/country-explorer", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/country-explorer/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19843"
+BASE_PATH = "/"
