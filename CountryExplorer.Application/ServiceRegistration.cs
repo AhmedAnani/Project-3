@@ -17,6 +17,7 @@ public static class ServiceRegistration
         services.AddScoped<ICountryExplorerService, CountryExplorerService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUserProfileService, UserProfileService>();
         return services;
     }
 }

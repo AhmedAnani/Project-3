@@ -11,13 +11,17 @@ namespace CountryExplorer.Api.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
+    private readonly IUserProfileService _userProfileService;
+
     private readonly ILogger<UsersController> _logger;
 
     public UsersController(
         IUserService userService,
+        IUserProfileService userProfileService,
         ILogger<UsersController> logger)
     {
         _userService = userService;
+        _userProfileService = userProfileService;
         _logger = logger;
     }
 
@@ -99,6 +103,27 @@ public class UsersController : ControllerBase
             throw;
         }
     }
+
+        /// <summary>
+        /// Get the authenticated user's full profile: basic info plus their
+        /// planned and visited trips.
+        /// </summary>
+        [Authorize]
+        [HttpGet("me/profile")]
+        public async Task<IActionResult> MyFullProfile(CancellationToken ct)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!Guid.TryParse(userIdClaim, out var userId))
+                return Unauthorized(new { message = "Invalid user id" });
+
+            var profile = await _userProfileService.GetFullProfileAsync(userId, ct);
+
+            if (profile == null)
+                return NotFound(new { message = "User not found" });
+
+            return Ok(profile);
+        }
 
 
     /// <summary>
@@ -206,4 +231,5 @@ public class UsersController : ControllerBase
 
         return userId;
     }
+        
 }
