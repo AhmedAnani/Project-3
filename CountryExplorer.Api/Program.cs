@@ -22,6 +22,7 @@ using Project_3.Extensions;
 using System.Security.Claims;
 using System.Text;
 using Project_3.Middlewares;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -136,6 +137,9 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "Authentication and user management API"
     });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
