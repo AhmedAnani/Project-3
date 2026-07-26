@@ -54,7 +54,7 @@ public static class DestinationScoringEngine
         double climateScore = ComputeClimateScore(destination.Tags);
         double infraScore = ComputeInfrastructureScore(destination);
         double vibeScore = ComputeVibeMatchScore(destination.Tags, request.PreferredTags);
-        double costScore = ComputeCostScore(destination.CostOfLivingIndex);
+        double costScore = ComputeCostScore(destination.CostOfLivingIndex, request.MaxBudget);
 
         // ── Step 3: Apply weighted average ────────────────────────────
         var weights = WeightProfiles[request.Purpose];
@@ -144,11 +144,14 @@ public static class DestinationScoringEngine
     }
 
     /// <summary>
-    /// Cost score = inverse of cost index. Cheaper destinations score higher.
+    /// Cost score dynamically scales based on the user's budget.
+    /// The higher the user's max budget, the less they care about cost, so the penalty flattens out.
+    /// If MaxBudget is 100 (Luxury), the cost penalty is 0, so expensive cities aren't penalized.
     /// </summary>
-    private static double ComputeCostScore(int costOfLivingIndex)
+    private static double ComputeCostScore(int costOfLivingIndex, int maxBudget)
     {
-        return 100 - costOfLivingIndex;
+        double penaltyFactor = (100.0 - maxBudget) / 100.0;
+        return 100.0 - (costOfLivingIndex * penaltyFactor);
     }
 
     /// <summary>

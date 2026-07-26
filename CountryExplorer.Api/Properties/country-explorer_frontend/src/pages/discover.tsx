@@ -206,7 +206,7 @@ export default function Discover() {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 18 }}>
                         <Sparkles style={{ width: 24, height: 24, opacity: 0.9 }} />
                         <span style={{ fontSize: 13, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', opacity: 0.85 }}>
-                            AI-Powered Discovery
+                            Smart Discovery
                         </span>
                     </div>
                     <h1 style={{
