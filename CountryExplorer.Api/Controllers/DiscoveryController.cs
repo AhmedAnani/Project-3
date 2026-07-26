@@ -87,11 +87,15 @@ public class DiscoveryController : ControllerBase
             return Unauthorized("Invalid or missing user ID in token.");
         }
 
-        _logger.LogInformation(
-            "SaveToTrips request: DestinationId={DestinationId}, UserId={UserId}",
-            destinationId, userId);
+        // Read the Google OAuth token from the request header (same pattern as TripsController)
+        Request.Headers.TryGetValue("X-Google-Token", out var googleTokenHeader);
+        var googleAccessToken = googleTokenHeader.ToString() != string.Empty ? googleTokenHeader.ToString() : null;
 
-        var trip = await _discoveryService.SaveToTripsAsync(userId, destinationId, request, cancellationToken);
+        _logger.LogInformation(
+            "SaveToTrips request: DestinationId={DestinationId}, UserId={UserId}, SyncCalendar={Sync}",
+            destinationId, userId, request.SyncWithGoogleCalendar);
+
+        var trip = await _discoveryService.SaveToTripsAsync(userId, destinationId, request, googleAccessToken, cancellationToken);
 
         return CreatedAtAction(
             actionName: "GetTrip",

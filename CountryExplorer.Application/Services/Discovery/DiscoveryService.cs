@@ -64,6 +64,7 @@ public class DiscoveryService : IDiscoveryService
         Guid userId,
         int destinationId,
         SaveDiscoveryRequestDto request,
+        string? googleAccessToken = null,
         CancellationToken cancellationToken = default)
     {
         // 1. Fetch destination
@@ -87,12 +88,12 @@ public class DiscoveryService : IDiscoveryService
             StartDate = startDate,
             EndDate = endDate,
             Notes = "Saved from Discovery Recommendations.",
-            SyncWithGoogleCalendar = false
+            SyncWithGoogleCalendar = request.SyncWithGoogleCalendar
         };
 
-        // 4. Save to User's Bucket List
+        // 4. Save to User's Bucket List (pass google token if calendar sync is requested)
         _logger.LogInformation("Saving discovered destination {CityName} to trips for User {UserId}", destination.CityName, userId);
 
-        return await _tripService.CreateTripAsync(userId, tripCreateDto, null, cancellationToken);
+        return await _tripService.CreateTripAsync(userId, tripCreateDto, googleAccessToken, cancellationToken);
     }
 }

@@ -14,6 +14,7 @@ import AuthCallback from '@/pages/auth-callback';
 import CountryDetail from '@/pages/country';
 import AttractionDetail from '@/pages/attraction';
 import Trips from '@/pages/trips';
+import Discover from '@/pages/discover';
 import Profile from '@/pages/profile';
 import Admin from '@/pages/admin';
 import NotFound from '@/pages/not-found';
@@ -32,12 +33,13 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/login" component={Login} />
-      <Route path="/auth/callback" component={AuthCallback} />
+      <Route path="/auth-callback" component={AuthCallback} />
       <Route path="/country/:name" component={CountryDetail} />
       <Route path="/attraction/:xid" component={AttractionDetail} />
       
       {/* Protected Routes */}
       <PrivateRoute path="/trips" component={Trips} />
+      <PrivateRoute path="/discover" component={Discover} />
       <PrivateRoute path="/profile" component={Profile} />
       
       {/* Admin Route */}

@@ -67,9 +67,7 @@ public class GlobalExceptionHandler : IExceptionHandler
             _ => (StatusCodes.Status500InternalServerError, "Internal Server Error")
         };
 
-        var detail = statusCode == StatusCodes.Status500InternalServerError
-            ? "An unexpected error occurred."
-            : exception.Message;
+        var detail = exception.ToString();
 
         if (statusCode == StatusCodes.Status500InternalServerError)
         {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
-import { Compass, User, LogOut, Shield, Map } from 'lucide-react';
+import { Compass, User, LogOut, Shield, Map, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useHealthCheck } from '@workspace/api-client-react';
 
@@ -26,6 +26,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <nav className="flex items-center gap-2 md:gap-4">
             {isAuthenticated ? (
               <>
+                <Link href="/discover" className="hidden md:flex">
+                  <Button variant={location.startsWith('/discover') ? 'secondary' : 'ghost'} size="sm" className="gap-2" data-testid="link-discover">
+                    <Sparkles className="h-4 w-4" />
+                    Discover
+                  </Button>
+                </Link>
                 <Link href="/trips" className="hidden md:flex">
                   <Button variant={location.startsWith('/trips') ? 'secondary' : 'ghost'} size="sm" className="gap-2" data-testid="link-trips">
                     <Map className="h-4 w-4" />

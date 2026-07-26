@@ -116,16 +116,23 @@ public class AuthController : ControllerBase
 
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        _logger.LogInformation("User logged in successfully {UserId}", user.Id);
-
-        return Ok(new AuthResponseWithGoogleTokenDto
+        var frontendUrl = _config["FrontendBaseUrl"] ?? "http://localhost:5173";
+        
+        var query = new Dictionary<string, string?>
         {
-            AccessToken = tokens.AccessToken,
-            RefreshToken = tokens.RefreshToken,
-            AccessTokenExpiresAt = tokens.AccessTokenExpiresAt,
-            GoogleAccessToken = googleAccessToken,  
-            User = tokens.User
-        });
+            { "accessToken", tokens.AccessToken },
+            { "refreshToken", tokens.RefreshToken },
+            { "userId", user.Id.ToString() },
+            { "email", user.Email },
+            { "fullName", user.FullName },
+            { "pictureUrl", user.PictureUrl },
+            { "role", user.Role.ToString() },
+            { "googleAccessToken", googleAccessToken }
+        };
+
+        var redirectUrl = Microsoft.AspNetCore.WebUtilities.QueryHelpers.AddQueryString($"{frontendUrl}/auth-callback", query);
+
+        return Redirect(redirectUrl);
     }
 
 

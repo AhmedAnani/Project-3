@@ -1,5 +1,22 @@
-﻿import axios from "axios";
+import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
+export interface UserProfile {
+    id: string;
+    email: string;
+    fullName: string;
+    pictureUrl?: string;
+    role: string;
+    createdAt: string;
+}
+
+export interface AuthResponse {
+    user: UserProfile;
+    accessToken: string;
+    refreshToken: string;
+    accessTokenExpiresAt: string;
+    googleAccessToken?: string;
+}
 
 export const apiClient = axios.create({
     baseURL: "/api",
@@ -40,16 +57,16 @@ export const useHealthCheck = () =>
 // ---------- Auth ----------
 export const useAuthRefresh = () =>
     useMutation({
-        mutationFn: async () => {
-            const { data } = await apiClient.post("/auth/refresh");
+        mutationFn: async (payload: { data: { refreshToken: string } }) => {
+            const { data } = await apiClient.post("/auth/refresh", payload.data);
             return data;
         },
     });
 
 export const useAuthLogout = () =>
     useMutation({
-        mutationFn: async () => {
-            await apiClient.post("/auth/logout");
+        mutationFn: async (payload: { data: { refreshToken: string } }) => {
+            await apiClient.post("/auth/logout", payload.data);
         },
     });
 
@@ -207,5 +224,72 @@ export const useDeleteTrip = () => {
 };
 
 export const getGetTripsQueryKey = () => ["trips"];
+
+// ---------- Discovery / Recommendations ----------
+export type ScoreBreakdownDto = {
+    destinationId: number;
+    cityName: string;
+    countryCode: string;
+    climateScore: number;
+    infrastructureScore: number;
+    vibeMatchScore: number;
+    costScore: number;
+    totalWeightedScore: number;
+    isDisqualified: boolean;
+    disqualificationReason?: string;
+};
+
+// Mirrors CountryExplorer.Domain.Enums.TripPurpose
+export const TripPurposeMap = {
+    Workation: 0,
+    Adventure: 1,
+    Vacation: 2,
+    CultureHistory: 3,
+} as const;
+
+// Mirrors CountryExplorer.Domain.Enums.VibeTag [Flags]
+export const VibeTagMap = {
+    None: 0,
+    IsCoastal: 1,
+    HasMountains: 2,
+    IsHistoric: 4,
+    IsUrban: 8,
+    IsWarmClimate: 16,
+    IsColdClimate: 32,
+} as const;
+
+export type DiscoveryRequest = {
+    purpose: number;
+    maxBudget: number;
+    preferredTags?: number;
+    topN: number;
+};
+
+export type SaveToTripsRequest = {
+    destinationId: number;
+    startDate?: string;
+    endDate?: string;
+    syncWithGoogleCalendar?: boolean;
+};
+
+export const useGetRecommendations = () =>
+    useMutation({
+        mutationFn: async (request: DiscoveryRequest) => {
+            const { data } = await apiClient.post<ScoreBreakdownDto[]>('/discovery/recommend', request);
+            return data;
+        },
+    });
+
+export const useSaveToTrips = () =>
+    useMutation({
+        mutationFn: async ({ destinationId, startDate, endDate, syncWithGoogleCalendar }: SaveToTripsRequest) => {
+            const { data } = await apiClient.post(`/discovery/${destinationId}/save`, {
+                startDate,
+                endDate,
+                syncWithGoogleCalendar: syncWithGoogleCalendar ?? false,
+            });
+            return data;
+        },
+    });
 
 export default apiClient;

@@ -17,4 +17,10 @@ public class SaveDiscoveryRequestDto
     /// If null, defaults to StartDate + 7 days.
     /// </summary>
     public DateTime? EndDate { get; set; }
+
+    /// <summary>
+    /// When true, the trip will be synced to the user's Google Calendar.
+    /// Requires a valid Google OAuth token in the X-Google-Token header.
+    /// </summary>
+    public bool SyncWithGoogleCalendar { get; set; } = false;
 }

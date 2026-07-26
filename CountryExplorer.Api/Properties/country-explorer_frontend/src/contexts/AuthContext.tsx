@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { UserProfile, AuthResponse, useAuthRefresh, useAuthLogout } from '@workspace/api-client-react';
+import { setGoogleTokenGetter } from '@/lib/api-client';
 
 export const tokenRef = { current: null as string | null };
 
@@ -8,6 +9,7 @@ interface AuthState {
   accessToken: string | null;
   refreshToken: string | null;
   accessTokenExpiresAt: string | null;
+  googleAccessToken: string | null;
 }
 
 interface AuthContextType extends AuthState {
@@ -26,13 +28,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     accessToken: null,
     refreshToken: null,
     accessTokenExpiresAt: null,
+    googleAccessToken: null,
   });
   const [isLoading, setIsLoading] = useState(true);
 
   const refreshMutation = useAuthRefresh();
   const logoutMutation = useAuthLogout();
 
-  // Load from local storage on mount
+  // Load from local storage on mount and restore Google token getter
   useEffect(() => {
     const stored = localStorage.getItem('ce_auth');
     if (stored) {
@@ -46,6 +49,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem('ce_auth');
       }
     }
+    // Re-wire the Google token getter from sessionStorage on every page load
+    // so X-Google-Token header is sent even after a hard refresh
+    setGoogleTokenGetter(() => sessionStorage.getItem('ce_google_token'));
     setIsLoading(false);
   }, []);
 
@@ -55,6 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       accessToken: data.accessToken,
       refreshToken: data.refreshToken,
       accessTokenExpiresAt: data.accessTokenExpiresAt,
+      googleAccessToken: data.googleAccessToken ?? null,
     };
     setAuthState(newState);
     tokenRef.current = data.accessToken;
@@ -62,7 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const login = () => {
-    window.location.href = '/api/auth/login';
+    window.location.href = 'https://localhost:7293/api/auth/login';
   };
 
   const logout = () => {
@@ -74,6 +81,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       accessToken: null,
       refreshToken: null,
       accessTokenExpiresAt: null,
+      googleAccessToken: null,
     });
     tokenRef.current = null;
     localStorage.removeItem('ce_auth');

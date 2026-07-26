@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
+import { setGoogleTokenGetter } from '@/lib/api-client';
 
 export default function AuthCallback() {
     const [, setLocation] = useLocation();
@@ -19,11 +20,21 @@ export default function AuthCallback() {
         const fullName = params.get('fullName');
         const pictureUrl = params.get('pictureUrl');
         const role = params.get('role');
+        const googleAccessToken = params.get('googleAccessToken');
 
         if (accessToken && userId && email && fullName) {
+            // Store google token in session storage so it persists across page navigations
+            if (googleAccessToken) {
+                sessionStorage.setItem('ce_google_token', googleAccessToken);
+            }
+            // Wire up the getter so API interceptor sends X-Google-Token header automatically
+            setGoogleTokenGetter(() => sessionStorage.getItem('ce_google_token'));
+
             const authData = {
                 accessToken,
                 refreshToken: refreshToken || '',
+                accessTokenExpiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+                googleAccessToken: googleAccessToken || undefined,
                 user: {
                     id: userId,
                     email,

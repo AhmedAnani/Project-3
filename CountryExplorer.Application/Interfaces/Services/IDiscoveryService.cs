@@ -24,5 +24,6 @@ public interface IDiscoveryService
         Guid userId,
         int destinationId,
         SaveDiscoveryRequestDto request,
+        string? googleAccessToken = null,
         CancellationToken cancellationToken = default);
 }

@@ -22,9 +22,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useAuth } from '@/contexts/AuthContext';
 export default function Trips() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { googleAccessToken } = useAuth();
   
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize] = useState(10);
@@ -55,6 +57,7 @@ export default function Trips() {
     setEndDate('');
     setNotes('');
     setStatus('Planned');
+    setSyncWithGoogleCalendar(false);
   };
 
   const handleCreateOpen = () => {
@@ -97,7 +100,7 @@ export default function Trips() {
     updateTrip.mutate(
       { 
         id: editingTrip.id, 
-        data: { title, countryCode, startDate, endDate, notes, status, visitedDate: status === 'Visited' ? new Date().toISOString() : null } 
+        data: { title, countryCode, startDate, endDate, notes, status, visitedDate: status === 'Visited' ? new Date().toISOString() : undefined } 
       },
       {
         onSuccess: () => {
@@ -173,10 +176,10 @@ export default function Trips() {
           <TripGrid trips={data?.items} isLoading={isLoading} onEdit={handleEditOpen} onDelete={handleDelete} onMarkVisited={handleMarkVisited} />
         </TabsContent>
         <TabsContent value="planned" className="mt-0">
-          <TripGrid trips={data?.items?.filter(t => t.status === 'Planned')} isLoading={isLoading} onEdit={handleEditOpen} onDelete={handleDelete} onMarkVisited={handleMarkVisited} />
+          <TripGrid trips={data?.items?.filter((t: TripItem) => t.status === 'Planned')} isLoading={isLoading} onEdit={handleEditOpen} onDelete={handleDelete} onMarkVisited={handleMarkVisited} />
         </TabsContent>
         <TabsContent value="visited" className="mt-0">
-          <TripGrid trips={data?.items?.filter(t => t.status === 'Visited')} isLoading={isLoading} onEdit={handleEditOpen} onDelete={handleDelete} onMarkVisited={handleMarkVisited} />
+          <TripGrid trips={data?.items?.filter((t: TripItem) => t.status === 'Visited')} isLoading={isLoading} onEdit={handleEditOpen} onDelete={handleDelete} onMarkVisited={handleMarkVisited} />
         </TabsContent>
       </Tabs>
 
@@ -187,18 +190,7 @@ export default function Trips() {
           <div className="flex items-center px-4 text-sm font-medium">Page {pageNumber} of {data.totalPages}</div>
           <Button variant="outline" disabled={pageNumber === data.totalPages} onClick={() => setPageNumber(p => p + 1)}>Next</Button>
         </div>
-          )}
-          {/* Google Calendar sync checkbox */}
-          <div className="flex items-center space-x-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
-              <Checkbox
-                  id="syncGoogle"
-                  checked={syncWithGoogleCalendar}
-                  onCheckedChange={(checked) => setSyncWithGoogleCalendar(checked as boolean)}
-              />
-              <Label htmlFor="syncGoogle" className="cursor-pointer flex-1 mb-0">
-                  Add to Google Calendar
-              </Label>
-          </div>
+      )}
       {/* Create Dialog */}
       <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
         <DialogContent className="sm:max-w-[500px]">
@@ -229,6 +221,26 @@ export default function Trips() {
                 <Label htmlFor="notes">Notes</Label>
                 <Textarea id="notes" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Places to see, things to do..." />
               </div>
+              {googleAccessToken ? (
+                <div className="flex items-center space-x-2 p-3 bg-blue-50 border border-blue-200 rounded-md">
+                  <Checkbox
+                    id="syncGoogle"
+                    checked={syncWithGoogleCalendar}
+                    onCheckedChange={(checked) => setSyncWithGoogleCalendar(checked as boolean)}
+                  />
+                  <Label htmlFor="syncGoogle" className="cursor-pointer flex-1 mb-0">
+                    Add to Google Calendar
+                  </Label>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
+                  <Checkbox id="syncGoogleDisabled" disabled />
+                  <Label htmlFor="syncGoogleDisabled" className="text-gray-400 flex-1 mb-0">
+                    Add to Google Calendar
+                    <span className="block text-xs font-normal mt-0.5">Sign in with Google to enable this feature</span>
+                  </Label>
+                </div>
+              )}
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setIsCreateOpen(false)}>Cancel</Button>

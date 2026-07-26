@@ -14,7 +14,7 @@ export interface AuthResponse {
     accessToken: string;
     refreshToken?: string;
     accessTokenExpiresAt?: string;
-    googleAccessToken?: string;  
+    googleAccessToken?: string;
     user: User;
 }
 interface AuthContextType {
@@ -53,7 +53,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const login = () => {
         sessionStorage.setItem('returnTo', window.location.pathname);
-        window.location.href = '/api/auth/google';
+        window.location.href = 'https://localhost:7293/api/auth/login';
     };
 
     const setAuthData = (authData: AuthResponse) => {
@@ -91,7 +91,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             user,
             token,
             googleToken,
-            isAuthenticated: !!user && !!token,  
+            isAuthenticated: !!user && !!token,
             login,
             setAuthData,
             logout
