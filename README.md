@@ -458,3 +458,61 @@ For issues, questions, or suggestions:
 ---
 
 **Happy Traveling! 🌏✈️**
+
+---
+
+## Submission Information
+
+### Domain
+
+```text
+https://localhost:7293
+```
+
+### Endpoint List
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/auth/login` | Start Google OAuth |
+| GET | `/api/auth/oauth-complete` | OAuth callback |
+| POST | `/api/auth/refresh` | Refresh JWT token |
+| POST | `/api/auth/logout` | Logout |
+| GET | `/api/countries` | Get all countries |
+| GET | `/api/countries/{code}` | Get country details |
+| GET | `/api/countries/{code}/attractions` | Get country attractions |
+| POST | `/api/discovery` | Get destination recommendations |
+| POST | `/api/discovery/save` | Save recommendation |
+| GET | `/api/trips` | Get user trips |
+| POST | `/api/trips` | Create trip |
+| PUT | `/api/trips/{id}` | Update trip |
+| DELETE | `/api/trips/{id}` | Delete trip |
+| GET | `/api/users/profile` | Get user profile |
+| PUT | `/api/users/profile` | Update profile |
+| POST | `/api/users/calendar/sync` | Sync Google Calendar |
+
+### Setup Instructions
+
+#### Backend
+
+```bash
+cd backend
+dotnet restore
+dotnet ef database update
+dotnet run
+```
+
+Backend URL: `https://localhost:7293`
+
+#### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend URL: `http://localhost:5173`
+
+### Postman Collection
+
+https://science-cosmologist-98925816-s-team.postman.co/workspace/My-Workspace~47cfdf6d-8c77-4568-8a76-fbd773454d26/collection/23821349-97073763-48b3-4e32-8ce9-745cdc140cf4?action=share&source=copy-link&creator=23821349
