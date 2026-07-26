@@ -1,4 +1,4 @@
-﻿namespace CountryExplorer.Application.Dtos.Auth;
+﻿namespace CountryExplorer.Application.DTOs.Auth;
 
 public class AuthResponseDto
 {

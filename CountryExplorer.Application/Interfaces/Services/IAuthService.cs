@@ -1,4 +1,4 @@
-﻿using CountryExplorer.Application.Dtos.Auth;
+﻿using CountryExplorer.Application.DTOs.Auth;
 using CountryExplorer.Domain.Entities;
 using System;
 using System.Collections.Generic;

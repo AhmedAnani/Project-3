@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CountryExplorer.Application.Dtos.Auth;
+using CountryExplorer.Application.DTOs.Auth;
 using CountryExplorer.Application.Mappings;
 using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Domain.Entities;

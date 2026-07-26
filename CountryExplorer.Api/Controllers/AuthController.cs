@@ -1,4 +1,3 @@
-using CountryExplorer.Application.Dtos.Auth;
 using CountryExplorer.Application.Interfaces.Services;
 using CountryExplorer.Application.DTOs.Auth;
 using Microsoft.AspNetCore.Authentication;
